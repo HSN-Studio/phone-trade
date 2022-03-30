@@ -4,7 +4,7 @@ import Brandcard from "./components/Brandcard";
 import ModelCard from "./components/ModelCard";
 function App() {
   // Variables
-
+  let uniqueDevices = [];
   // States
   const [allDevices, setallDevices] = useState([]);
   const [deviceNumber, setdeviceNumber] = useState(0);
@@ -23,9 +23,9 @@ function App() {
   useEffect(() => {
     fetchDevices();
   }, []);
-  // useEffect(() => {
-  //   uniqueDevices.length > 0 && setallDevices(uniqueDevices);
-  // }, [uniqueDevices]);
+  useEffect(() => {
+    console.log(uniqueDevices);
+  }, [uniqueDevices]);
 
   // Methods
   const fetchDevices = () => {
@@ -43,14 +43,12 @@ function App() {
   const nextClickHandler = () => {
     let selectedMakeDevices = devices[`${userDevices[deviceNumber].make}`];
     if (!selectedMakeDevices) return;
-    console.log("Hello");
-    const uniqueDevices = [
+    uniqueDevices = [
       ...new Map(
         selectedMakeDevices.map((device) => [device["phone"], device.phone])
       ).values(),
     ];
     console.log(uniqueDevices);
-    setallDevices(uniqueDevices);
   };
   const modelClickHandler = (modelName) => {};
   // JSX
