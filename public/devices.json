@@ -1,0 +1,949 @@
+{
+  "Apple": [
+    {
+      "phone": "iPhone SE (First Gen)",
+      "storage": "16GB",
+      "price_new": 16000,
+      "price_grade_a": 8000,
+      "price_grade_b": 6400,
+      "price_grade_c": 2400,
+      "selling_price": 11200
+    },
+    {
+      "phone": "iPhone SE (First Gen)",
+      "storage": "32GB",
+      "price_new": 19000,
+      "price_grade_a": 9500,
+      "price_grade_b": 7600,
+      "price_grade_c": 2850,
+      "selling_price": 13300
+    },
+    {
+      "phone": "iPhone SE (First Gen)",
+      "storage": "64GB",
+      "price_new": 22000,
+      "price_grade_a": 11000,
+      "price_grade_b": 8800,
+      "price_grade_c": 3300,
+      "selling_price": 15400
+    },
+    {
+      "phone": "iPhone SE (First Gen)",
+      "storage": "128GB",
+      "price_new": 27000,
+      "price_grade_a": 13500,
+      "price_grade_b": 10800,
+      "price_grade_c": 4050,
+      "selling_price": 18900
+    },
+    {
+      "phone": "iPhone 6",
+      "storage": "32GB",
+      "price_new": 14500,
+      "price_grade_a": 7250,
+      "price_grade_b": 5800,
+      "price_grade_c": 2175,
+      "selling_price": 10150
+    },
+    {
+      "phone": "iPhone 6",
+      "storage": "64GB",
+      "price_new": 17000,
+      "price_grade_a": 8500,
+      "price_grade_b": 6800,
+      "price_grade_c": 2550,
+      "selling_price": 11900
+    },
+    {
+      "phone": "iPhone 6 Plus",
+      "storage": "64GB",
+      "price_new": 25000,
+      "price_grade_a": 12500,
+      "price_grade_b": 10000,
+      "price_grade_c": 3750,
+      "selling_price": 17500
+    },
+    {
+      "phone": "iPhone 6S",
+      "storage": "16GB",
+      "price_new": 22000,
+      "price_grade_a": 11000,
+      "price_grade_b": 8800,
+      "price_grade_c": 3300,
+      "selling_price": 15400
+    },
+    {
+      "phone": "iPhone 6S",
+      "storage": "32GB",
+      "price_new": 25000,
+      "price_grade_a": 12500,
+      "price_grade_b": 10000,
+      "price_grade_c": 3750,
+      "selling_price": 17500
+    },
+    {
+      "phone": "iPhone 6S",
+      "storage": "64GB",
+      "price_new": 28000,
+      "price_grade_a": 14000,
+      "price_grade_b": 11200,
+      "price_grade_c": 4200,
+      "selling_price": 19600
+    },
+    {
+      "phone": "iPhone 6S",
+      "storage": "128GB",
+      "price_new": 32000,
+      "price_grade_a": 16000,
+      "price_grade_b": 12800,
+      "price_grade_c": 4800,
+      "selling_price": 22400
+    },
+    {
+      "phone": "iPhone 6S Plus",
+      "storage": "16GB",
+      "price_new": 26000,
+      "price_grade_a": 13000,
+      "price_grade_b": 10400,
+      "price_grade_c": 3900,
+      "selling_price": 18200
+    },
+    {
+      "phone": "iPhone 6S Plus",
+      "storage": "32GB",
+      "price_new": 28000,
+      "price_grade_a": 14000,
+      "price_grade_b": 11200,
+      "price_grade_c": 4200,
+      "selling_price": 19600
+    },
+    {
+      "phone": "iPhone 6S Plus",
+      "storage": "64GB",
+      "price_new": 31000,
+      "price_grade_a": 15500,
+      "price_grade_b": 12400,
+      "price_grade_c": 4650,
+      "selling_price": 21700
+    },
+    {
+      "phone": "iPhone 6S Plus",
+      "storage": "128GB",
+      "price_new": 33000,
+      "price_grade_a": 16500,
+      "price_grade_b": 13200,
+      "price_grade_c": 4950,
+      "selling_price": 23100
+    },
+    {
+      "phone": "iPhone 7G",
+      "storage": "32GB",
+      "price_new": 22000,
+      "price_grade_a": 11000,
+      "price_grade_b": 8800,
+      "price_grade_c": 3300,
+      "selling_price": 15400
+    },
+    {
+      "phone": "iPhone 7G",
+      "storage": "128GB",
+      "price_new": 29000,
+      "price_grade_a": 14500,
+      "price_grade_b": 11600,
+      "price_grade_c": 4350,
+      "selling_price": 20300
+    },
+    {
+      "phone": "iPhone 7G",
+      "storage": "256GB",
+      "price_new": 34000,
+      "price_grade_a": 17000,
+      "price_grade_b": 13600,
+      "price_grade_c": 5100,
+      "selling_price": 23800
+    },
+    {
+      "phone": "iPhone 7 Plus",
+      "storage": "32GB",
+      "price_new": 36000,
+      "price_grade_a": 18000,
+      "price_grade_b": 14400,
+      "price_grade_c": 5400,
+      "selling_price": 25200
+    },
+    {
+      "phone": "iPhone 7 Plus",
+      "storage": "128GB",
+      "price_new": 42000,
+      "price_grade_a": 21000,
+      "price_grade_b": 16800,
+      "price_grade_c": 6300,
+      "selling_price": 29400
+    },
+    {
+      "phone": "iPhone 7 Plus",
+      "storage": "256GB",
+      "price_new": 45000,
+      "price_grade_a": 22500,
+      "price_grade_b": 18000,
+      "price_grade_c": 6750,
+      "selling_price": 31500
+    },
+    {
+      "phone": "iPhone 8G",
+      "storage": "64GB",
+      "price_new": 31000,
+      "price_grade_a": 15500,
+      "price_grade_b": 12400,
+      "price_grade_c": 4650,
+      "selling_price": 21700
+    },
+    {
+      "phone": "iPhone 8G",
+      "storage": "256GB",
+      "price_new": 36000,
+      "price_grade_a": 18000,
+      "price_grade_b": 14400,
+      "price_grade_c": 5400,
+      "selling_price": 25200
+    },
+    {
+      "phone": "iPhone 8 Plus",
+      "storage": "64GB",
+      "price_new": 44000,
+      "price_grade_a": 22000,
+      "price_grade_b": 17600,
+      "price_grade_c": 6600,
+      "selling_price": 30800
+    },
+    {
+      "phone": "iPhone 8 Plus",
+      "storage": "256GB",
+      "price_new": 52000,
+      "price_grade_a": 26000,
+      "price_grade_b": 20800,
+      "price_grade_c": 7800,
+      "selling_price": 36400
+    },
+    {
+      "phone": "iPhone SE (Second Gen)",
+      "storage": "64GB",
+      "price_new": 43000,
+      "price_grade_a": 21500,
+      "price_grade_b": 17200,
+      "price_grade_c": 6450,
+      "selling_price": 30100
+    },
+    {
+      "phone": "iPhone SE (Second Gen)",
+      "storage": "128GB",
+      "price_new": 51000,
+      "price_grade_a": 25500,
+      "price_grade_b": 20400,
+      "price_grade_c": 7650,
+      "selling_price": 35700
+    },
+    {
+      "phone": "iPhone X",
+      "storage": "64GB",
+      "price_new": 50000,
+      "price_grade_a": 25000,
+      "price_grade_b": 20000,
+      "price_grade_c": 7500,
+      "selling_price": 35000
+    },
+    {
+      "phone": "iPhone X",
+      "storage": "256GB",
+      "price_new": 57000,
+      "price_grade_a": 28500,
+      "price_grade_b": 22800,
+      "price_grade_c": 8550,
+      "selling_price": 39900
+    },
+    {
+      "phone": "iPhone Xs",
+      "storage": "64GB",
+      "price_new": 53000,
+      "price_grade_a": 26500,
+      "price_grade_b": 21200,
+      "price_grade_c": 7950,
+      "selling_price": 37100
+    },
+    {
+      "phone": "iPhone Xs",
+      "storage": "256GB",
+      "price_new": 59000,
+      "price_grade_a": 29500,
+      "price_grade_b": 23600,
+      "price_grade_c": 8850,
+      "selling_price": 41300
+    },
+    {
+      "phone": "iPhone Xr",
+      "storage": "64GB",
+      "price_new": 54000,
+      "price_grade_a": 27000,
+      "price_grade_b": 21600,
+      "price_grade_c": 8100,
+      "selling_price": 37800
+    },
+    {
+      "phone": "iPhone Xr",
+      "storage": "128GB",
+      "price_new": 59000,
+      "price_grade_a": 29500,
+      "price_grade_b": 23600,
+      "price_grade_c": 8850,
+      "selling_price": 41300
+    },
+    {
+      "phone": "iPhone Xr",
+      "storage": "256GB",
+      "price_new": 70000,
+      "price_grade_a": 35000,
+      "price_grade_b": 28000,
+      "price_grade_c": 10500,
+      "selling_price": 49000
+    },
+    {
+      "phone": "iPhone Xs Max",
+      "storage": "64GB",
+      "price_new": 63000,
+      "price_grade_a": 31500,
+      "price_grade_b": 25200,
+      "price_grade_c": 9450,
+      "selling_price": 44100
+    },
+    {
+      "phone": "iPhone Xs Max",
+      "storage": "256GB",
+      "price_new": 72000,
+      "price_grade_a": 36000,
+      "price_grade_b": 28800,
+      "price_grade_c": 10800,
+      "selling_price": 50400
+    },
+    {
+      "phone": "iPhone Xs Max",
+      "storage": "512GB",
+      "price_new": 125000,
+      "price_grade_a": 62500,
+      "price_grade_b": 50000,
+      "price_grade_c": 18750,
+      "selling_price": 87500
+    },
+    {
+      "phone": "iPhone 11G",
+      "storage": "64GB",
+      "price_new": 73000,
+      "price_grade_a": 36500,
+      "price_grade_b": 29200,
+      "price_grade_c": 10950,
+      "selling_price": 51100
+    },
+    {
+      "phone": "iPhone 11G",
+      "storage": "128GB",
+      "price_new": 80000,
+      "price_grade_a": 40000,
+      "price_grade_b": 32000,
+      "price_grade_c": 12000,
+      "selling_price": 56000
+    },
+    {
+      "phone": "iPhone 11G",
+      "storage": "256GB",
+      "price_new": 98000,
+      "price_grade_a": 49000,
+      "price_grade_b": 39200,
+      "price_grade_c": 14700,
+      "selling_price": 68600
+    },
+    {
+      "phone": "iPhone 11 Pro",
+      "storage": "64GB",
+      "price_new": 89000,
+      "price_grade_a": 44500,
+      "price_grade_b": 35600,
+      "price_grade_c": 13350,
+      "selling_price": 62300
+    },
+    {
+      "phone": "iPhone 11 Pro",
+      "storage": "256GB",
+      "price_new": 100000,
+      "price_grade_a": 50000,
+      "price_grade_b": 40000,
+      "price_grade_c": 15000,
+      "selling_price": 70000
+    },
+    {
+      "phone": "iPhone 11 Pro",
+      "storage": "512GB",
+      "price_new": 127000,
+      "price_grade_a": 63500,
+      "price_grade_b": 50800,
+      "price_grade_c": 19050,
+      "selling_price": 88900
+    },
+    {
+      "phone": "iPhone 11 Pro Max",
+      "storage": "64GB",
+      "price_new": 105000,
+      "price_grade_a": 52500,
+      "price_grade_b": 42000,
+      "price_grade_c": 15750,
+      "selling_price": 73500
+    },
+    {
+      "phone": "iPhone 11 Pro Max",
+      "storage": "256GB",
+      "price_new": 112000,
+      "price_grade_a": 56000,
+      "price_grade_b": 44800,
+      "price_grade_c": 16800,
+      "selling_price": 78400
+    },
+    {
+      "phone": "iPhone 11 Pro Max",
+      "storage": "512GB",
+      "price_new": 160000,
+      "price_grade_a": 80000,
+      "price_grade_b": 64000,
+      "price_grade_c": 24000,
+      "selling_price": 112000
+    },
+    {
+      "phone": "iPhone 12 Mini",
+      "storage": "64GB",
+      "price_new": 79000,
+      "price_grade_a": 39500,
+      "price_grade_b": 31600,
+      "price_grade_c": 11850,
+      "selling_price": 55300
+    },
+    {
+      "phone": "iPhone 12 Mini",
+      "storage": "128GB",
+      "price_new": 85000,
+      "price_grade_a": 42500,
+      "price_grade_b": 34000,
+      "price_grade_c": 12750,
+      "selling_price": 59500
+    },
+    {
+      "phone": "iPhone 12 Mini",
+      "storage": "256GB",
+      "price_new": 106000,
+      "price_grade_a": 53000,
+      "price_grade_b": 42400,
+      "price_grade_c": 15900,
+      "selling_price": 74200
+    },
+    {
+      "phone": "iPhone 12 ",
+      "storage": "64GB",
+      "price_new": 90000,
+      "price_grade_a": 45000,
+      "price_grade_b": 36000,
+      "price_grade_c": 13500,
+      "selling_price": 63000
+    },
+    {
+      "phone": "iPhone 12",
+      "storage": "128GB",
+      "price_new": 97000,
+      "price_grade_a": 48500,
+      "price_grade_b": 38800,
+      "price_grade_c": 14550,
+      "selling_price": 67900
+    },
+    {
+      "phone": "iPhone 12",
+      "storage": "256GB",
+      "price_new": 112000,
+      "price_grade_a": 56000,
+      "price_grade_b": 44800,
+      "price_grade_c": 16800,
+      "selling_price": 78400
+    },
+    {
+      "phone": "iPhone 12 Pro",
+      "storage": "128GB",
+      "price_new": 117000,
+      "price_grade_a": 58500,
+      "price_grade_b": 46800,
+      "price_grade_c": 17550,
+      "selling_price": 81900
+    },
+    {
+      "phone": "iPhone 12 Pro",
+      "storage": "256GB",
+      "price_new": 130000,
+      "price_grade_a": 65000,
+      "price_grade_b": 52000,
+      "price_grade_c": 19500,
+      "selling_price": 91000
+    },
+    {
+      "phone": "iPhone 12 Pro",
+      "storage": "512GB",
+      "price_new": 156000,
+      "price_grade_a": 78000,
+      "price_grade_b": 62400,
+      "price_grade_c": 23400,
+      "selling_price": 109200
+    },
+    {
+      "phone": "iPhone 12 Pro Max",
+      "storage": "128GB",
+      "price_new": 130000,
+      "price_grade_a": 65000,
+      "price_grade_b": 52000,
+      "price_grade_c": 19500,
+      "selling_price": 91000
+    },
+    {
+      "phone": "iPhone 12 Pro Max",
+      "storage": "256GB",
+      "price_new": 150000,
+      "price_grade_a": 75000,
+      "price_grade_b": 60000,
+      "price_grade_c": 22500,
+      "selling_price": 105000
+    },
+    {
+      "phone": "iPhone 12 Pro Max",
+      "storage": "512GB",
+      "price_new": 170000,
+      "price_grade_a": 85000,
+      "price_grade_b": 68000,
+      "price_grade_c": 25500,
+      "selling_price": 119000
+    },
+    {
+      "phone": "iPhone 13 Mini",
+      "storage": "128GB",
+      "price_new": 98000,
+      "price_grade_a": 49000,
+      "price_grade_b": 39200,
+      "price_grade_c": 14700,
+      "selling_price": 68600
+    },
+    {
+      "phone": "iPhone 13 Mini",
+      "storage": "256GB",
+      "price_new": 111000,
+      "price_grade_a": 55500,
+      "price_grade_b": 44400,
+      "price_grade_c": 16650,
+      "selling_price": 77700
+    },
+    {
+      "phone": "iPhone 13 Mini",
+      "storage": "512GB",
+      "price_new": 138000,
+      "price_grade_a": 69000,
+      "price_grade_b": 55200,
+      "price_grade_c": 20700,
+      "selling_price": 96600
+    },
+    {
+      "phone": "iPhone 13 ",
+      "storage": "128GB",
+      "price_new": 104000,
+      "price_grade_a": 52000,
+      "price_grade_b": 41600,
+      "price_grade_c": 15600,
+      "selling_price": 72800
+    },
+    {
+      "phone": "iPhone 13",
+      "storage": "256GB",
+      "price_new": 112000,
+      "price_grade_a": 56000,
+      "price_grade_b": 44800,
+      "price_grade_c": 16800,
+      "selling_price": 78400
+    },
+    {
+      "phone": "iPhone 13",
+      "storage": "512GB",
+      "price_new": 145000,
+      "price_grade_a": 72500,
+      "price_grade_b": 58000,
+      "price_grade_c": 21750,
+      "selling_price": 101500
+    },
+    {
+      "phone": "iPhone 13 Pro",
+      "storage": "128GB",
+      "price_new": 140000,
+      "price_grade_a": 70000,
+      "price_grade_b": 56000,
+      "price_grade_c": 21000,
+      "selling_price": 98000
+    },
+    {
+      "phone": "iPhone 13 Pro",
+      "storage": "256GB",
+      "price_new": 150000,
+      "price_grade_a": 75000,
+      "price_grade_b": 60000,
+      "price_grade_c": 22500,
+      "selling_price": 105000
+    },
+    {
+      "phone": "iPhone 13 Pro",
+      "storage": "512GB",
+      "price_new": 185000,
+      "price_grade_a": 92500,
+      "price_grade_b": 74000,
+      "price_grade_c": 27750,
+      "selling_price": 129500
+    },
+    {
+      "phone": "iPhone 13 Pro Max",
+      "storage": "128GB",
+      "price_new": 150000,
+      "price_grade_a": 75000,
+      "price_grade_b": 60000,
+      "price_grade_c": 22500,
+      "selling_price": 105000
+    },
+    {
+      "phone": "iPhone 13 Pro Max",
+      "storage": "256GB",
+      "price_new": 160000,
+      "price_grade_a": 80000,
+      "price_grade_b": 64000,
+      "price_grade_c": 24000,
+      "selling_price": 112000
+    },
+    {
+      "phone": "iPhone 13 Pro Max",
+      "storage": "512GB",
+      "price_new": 188000,
+      "price_grade_a": 94000,
+      "price_grade_b": 75200,
+      "price_grade_c": 28200,
+      "selling_price": 131600
+    },
+    {
+      "phone": "iPhone 13 Pro Max",
+      "storage": "1TB",
+      "price_new": 212000,
+      "price_grade_a": 106000,
+      "price_grade_b": 84800,
+      "price_grade_c": 31800,
+      "selling_price": 148400
+    }
+  ],
+  "Samsung": [
+    {
+      "phone": "Samsung S8",
+      "storage": "4GB, 64GB",
+      "price_new": 33000,
+      "price_grade_a": 16500,
+      "price_grade_b": 13200,
+      "price_grade_c": 4950
+    },
+    {
+      "phone": "Samsung S8 plus",
+      "storage": "4GB, 64GB",
+      "price_new": 41000,
+      "price_grade_a": 20500,
+      "price_grade_b": 16400,
+      "price_grade_c": 6150
+    },
+    {
+      "phone": "Samsung S9",
+      "storage": "4GB, 64GB",
+      "price_new": 42000,
+      "price_grade_a": 21000,
+      "price_grade_b": 16800,
+      "price_grade_c": 6300
+    },
+    {
+      "phone": "Samsung S9 plus",
+      "storage": "6GB, 128GB",
+      "price_new": 52000,
+      "price_grade_a": 26000,
+      "price_grade_b": 20800,
+      "price_grade_c": 7800
+    },
+    {
+      "phone": "Samsung S10e",
+      "storage": "6GB, 128GB",
+      "price_new": 48000,
+      "price_grade_a": 24000,
+      "price_grade_b": 19200,
+      "price_grade_c": 7200
+    },
+    {
+      "phone": "Samsung S10",
+      "storage": "8GB, 128GB",
+      "price_new": 58000,
+      "price_grade_a": 29000,
+      "price_grade_b": 23200,
+      "price_grade_c": 8700
+    },
+    {
+      "phone": "Samsung S10 plus",
+      "storage": "8GB, 128GB",
+      "price_new": 65000,
+      "price_grade_a": 32500,
+      "price_grade_b": 26000,
+      "price_grade_c": 9750
+    },
+    {
+      "phone": "Samsung S10 plus",
+      "storage": "8GB, 512GB",
+      "price_new": 70000,
+      "price_grade_a": 35000,
+      "price_grade_b": 28000,
+      "price_grade_c": 10500
+    },
+    {
+      "phone": "Samsung S20",
+      "storage": "8GB, 128GB",
+      "price_new": 72000,
+      "price_grade_a": 36000,
+      "price_grade_b": 28800,
+      "price_grade_c": 10800
+    },
+    {
+      "phone": "Samsung S20 plus",
+      "storage": "8GB, 128GB",
+      "price_new": 89000,
+      "price_grade_a": 44500,
+      "price_grade_b": 35600,
+      "price_grade_c": 13350
+    },
+    {
+      "phone": "Samsung S20 ultra",
+      "storage": "12GB, 128GB",
+      "price_new": 108000,
+      "price_grade_a": 54000,
+      "price_grade_b": 43200,
+      "price_grade_c": 16200
+    },
+    {
+      "phone": "Samsung S20 FE",
+      "storage": "6GB, 128GB",
+      "price_new": 55000,
+      "price_grade_a": 27500,
+      "price_grade_b": 22000,
+      "price_grade_c": 8250
+    },
+    {
+      "phone": "Samsung S21",
+      "storage": "8GB, 128GB",
+      "price_new": 87000,
+      "price_grade_a": 43500,
+      "price_grade_b": 34800,
+      "price_grade_c": 13050
+    },
+    {
+      "phone": "Samsung S22",
+      "storage": "8GB, 256GB",
+      "price_new": 93000,
+      "price_grade_a": 46500,
+      "price_grade_b": 37200,
+      "price_grade_c": 13950
+    },
+    {
+      "phone": "Samsung S21 plus 5G",
+      "storage": "8GB, 128GB",
+      "price_new": 95000,
+      "price_grade_a": 47500,
+      "price_grade_b": 38000,
+      "price_grade_c": 14250
+    },
+    {
+      "phone": "Samsung S21 plus 5G",
+      "storage": "8GB, 256GB",
+      "price_new": 105000,
+      "price_grade_a": 52500,
+      "price_grade_b": 42000,
+      "price_grade_c": 15750
+    },
+    {
+      "phone": "Samsung S21 ultra 5G",
+      "storage": "12GB, 256GB",
+      "price_new": 137000,
+      "price_grade_a": 68500,
+      "price_grade_b": 54800,
+      "price_grade_c": 20550
+    },
+    {
+      "phone": "Samsung S21 ultra 5G",
+      "storage": "16GB, 512GB",
+      "price_new": 152000,
+      "price_grade_a": 76000,
+      "price_grade_b": 60800,
+      "price_grade_c": 22800
+    },
+    {
+      "phone": "Samsung S21 FE",
+      "storage": "6GB, 128GB",
+      "price_new": 75000,
+      "price_grade_a": 37500,
+      "price_grade_b": 30000,
+      "price_grade_c": 11250
+    },
+    {
+      "phone": "Samsung S21 FE",
+      "storage": "8GB,256GB",
+      "price_new": 84000,
+      "price_grade_a": 42000,
+      "price_grade_b": 33600,
+      "price_grade_c": 12600
+    },
+    {
+      "phone": "Samsung Note 8",
+      "storage": "6GB,64GB",
+      "price_new": 50000,
+      "price_grade_a": 25000,
+      "price_grade_b": 20000,
+      "price_grade_c": 7500
+    },
+    {
+      "phone": "Samsung Note 9",
+      "storage": "6GB,128GB",
+      "price_new": 52000,
+      "price_grade_a": 26000,
+      "price_grade_b": 20800,
+      "price_grade_c": 7800
+    },
+    {
+      "phone": "Samsung Note 10",
+      "storage": "8GB,256GB",
+      "price_new": 62000,
+      "price_grade_a": 31000,
+      "price_grade_b": 24800,
+      "price_grade_c": 9300
+    },
+    {
+      "phone": "Samsung Note 10",
+      "storage": "12GB, 256GB",
+      "price_new": 85000,
+      "price_grade_a": 42500,
+      "price_grade_b": 34000,
+      "price_grade_c": 12750
+    },
+    {
+      "phone": "Samsung Note 10 plus",
+      "storage": "12GB, 256GB",
+      "price_new": 75000,
+      "price_grade_a": 37500,
+      "price_grade_b": 30000,
+      "price_grade_c": 11250
+    },
+    {
+      "phone": "Samsung Note 10 plus",
+      "storage": "12GB, 512GB",
+      "price_new": 88000,
+      "price_grade_a": 44000,
+      "price_grade_b": 35200,
+      "price_grade_c": 13200
+    },
+    {
+      "phone": "Samsung Note 20",
+      "storage": "8GB, 256GB",
+      "price_new": 85000,
+      "price_grade_a": 42500,
+      "price_grade_b": 34000,
+      "price_grade_c": 12750
+    },
+    {
+      "phone": "Samsung Note 20 5G",
+      "storage": "8GB, 256GB",
+      "price_new": 89000,
+      "price_grade_a": 44500,
+      "price_grade_b": 35600,
+      "price_grade_c": 13350
+    },
+    {
+      "phone": "Samsung Note 20 ultra",
+      "storage": "8GB, 256GB",
+      "price_new": 97000,
+      "price_grade_a": 48500,
+      "price_grade_b": 38800,
+      "price_grade_c": 14550
+    },
+    {
+      "phone": "Samsung Note 20 ultra 5G",
+      "storage": "12GB, 256GB",
+      "price_new": 110000,
+      "price_grade_a": 55000,
+      "price_grade_b": 44000,
+      "price_grade_c": 16500
+    },
+    {
+      "phone": "Samsung Note 20 ultra 5G",
+      "storage": "12GB, 512GB",
+      "price_new": 130000,
+      "price_grade_a": 65000,
+      "price_grade_b": 52000,
+      "price_grade_c": 19500
+    },
+    {
+      "phone": "Samsung Z Fold",
+      "storage": "12GB, 512GB",
+      "price_new": 148000,
+      "price_grade_a": 74000,
+      "price_grade_b": 59200,
+      "price_grade_c": 22200
+    },
+    {
+      "phone": "Samsung Z Fold 2 5G",
+      "storage": "12GB, 256GB",
+      "price_new": 165000,
+      "price_grade_a": 82500,
+      "price_grade_b": 66000,
+      "price_grade_c": 24750
+    },
+    {
+      "phone": "Samsung Z Fold 3 5G",
+      "storage": "12GB, 256GB",
+      "price_new": 180000,
+      "price_grade_a": 90000,
+      "price_grade_b": 72000,
+      "price_grade_c": 27000
+    },
+    {
+      "phone": "Samsung Fold 3 5G",
+      "storage": "12GB, 512GB",
+      "price_new": 198000,
+      "price_grade_a": 99000,
+      "price_grade_b": 79200,
+      "price_grade_c": 29700
+    },
+    {
+      "phone": "Samsung Z Flip",
+      "storage": "8GB, 256GB",
+      "price_new": 89000,
+      "price_grade_a": 44500,
+      "price_grade_b": 35600,
+      "price_grade_c": 13350
+    },
+    {
+      "phone": "Samsung Z Flip 5G",
+      "storage": "8GB, 256GB",
+      "price_new": 108000,
+      "price_grade_a": 54000,
+      "price_grade_b": 43200,
+      "price_grade_c": 16200
+    },
+    {
+      "phone": "Samsung Z Flip3 5G",
+      "storage": "8GB, 256GB",
+      "price_new": 113000,
+      "price_grade_a": 56500,
+      "price_grade_b": 45200,
+      "price_grade_c": 16950
+    }
+  ]
+}
