@@ -7,6 +7,9 @@ function DeviceDetails({ deviceDetails, allDevices }) {
     model: deviceDetails.model,
     storage: "",
     condition: "",
+    price_new: "",
+    worth: "",
+    multiplier: 1,
   });
 
   // Variables
@@ -15,53 +18,79 @@ function DeviceDetails({ deviceDetails, allDevices }) {
   );
 
   //Methods
+  console.log(device);
   const storageHandler = (storage) => {
-    // let deviceUpdate = { ...device };
-    // deviceUpdate.storage = storage;
-    // setdevice(deviceUpdate);
-    device.storage && device.condition
-      ? console.log(variants.map((variant) => variant.storage === storage))
-      : console.log("iko");
+    if (!storage) return;
+    let selectedDevice = variants.filter(
+      (variant) => variant.storage == storage
+    )[0];
+    let deviceUpdate = { ...device };
+    deviceUpdate.storage = storage;
+    deviceUpdate.price_new = selectedDevice.price_new;
+    setdevice(deviceUpdate);
   };
   const gradeHandler = (grade) => {
+    if (!grade) return;
     let deviceUpdate = { ...device };
     deviceUpdate.condition = grade;
+    if (grade === "Grade-A") {
+      deviceUpdate.multiplier = 0.5;
+      deviceUpdate.worth = deviceUpdate.price_new * 0.5;
+    }
+    if (grade === "Grade-B") {
+      deviceUpdate.multiplier = 0.4;
+      deviceUpdate.worth = deviceUpdate.price_new * 0.4;
+    }
+    if (grade === "Grade-C") {
+      deviceUpdate.multiplier = 0.15;
+      deviceUpdate.worth = deviceUpdate.price_new * 0.15;
+    }
     setdevice(deviceUpdate);
   };
   // JSX
   return (
-    <div className="device-details">
-      <div className="specification">
-        <h2>Select Device Specs:</h2>
-        <select
-          name="storage"
-          id="storage"
-          onChange={(e) => storageHandler(e.target.value)}
-        >
-          {variants.map((variant) => (
-            <option value={variant.storage}>{variant.storage}</option>
-          ))}
-        </select>
-        <select
-          name="Condition"
-          id="condition"
-          onChange={(e) => gradeHandler(e.target.value)}
-        >
-          <option value="Grade-A">Grade A (Good)</option>
-          <option value="Grade-B">Grade B (Fair)</option>
-          <option value="Grade-C">Grade C (Poor)</option>
-        </select>
-        <h3 className="device-price-new"></h3>
+    <div className="device-details-container">
+      <div className="specifications">
+        <div className="specs-content">
+          <h2>Select Device Specs:</h2>
+          <h3>{deviceDetails.model}</h3>
+          <select
+            name="storage"
+            id="storage"
+            onChange={(e) => storageHandler(e.target.value)}
+          >
+            <option>Select Storage</option>
+            {variants.map((variant, i) => (
+              <option value={variant.storage} key={i}>
+                {variant.storage}
+              </option>
+            ))}
+          </select>
+          <select
+            name="Condition"
+            id="condition"
+            onChange={(e) => gradeHandler(e.target.value)}
+          >
+            <option>Select Condition</option>
+            <option value="Grade-A">Grade A (Good)</option>
+            <option value="Grade-B">Grade B (Fair)</option>
+            <option value="Grade-C">Grade C (Poor)</option>
+          </select>
+          {device.price_new ? (
+            <h3>Brand New Price: Ksh {device.price_new}</h3>
+          ) : null}
+          {device.multiplier !== 1 ? (
+            <h3>Offered Price: Ksh {device.price_new * device.multiplier}</h3>
+          ) : null}
+        </div>
       </div>
       <div className="summary">
         <img
           src={`/images/model-images/${deviceDetails.model
             .toLowerCase()
-            .replaceAll(" ", "-")}.png`}
+            .replaceAll(" ", "-")}.jpg`}
           alt={deviceDetails.model}
         ></img>
-        <h2>{deviceDetails.model}</h2>
-        <h3>{`Brand New Price: ${variants[0].price_new}`}</h3>
       </div>
     </div>
   );

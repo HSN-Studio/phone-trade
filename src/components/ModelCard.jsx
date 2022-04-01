@@ -16,15 +16,14 @@ function ModelCard({ title, handler }) {
       }}
     >
       <input type="radio" name="model" id={modelTitle} value={title}></input>
-      <h2 className="model-card-title">{title}</h2>
       <img
         src={`/images/model-images/${title
           .toLowerCase()
-          .replaceAll(" ", "-")}.png`}
+          .replaceAll(" ", "-")}.jpg`}
         alt={title}
         className="model-card-img"
-        style={{ width: "150px", height: "auto" }}
       ></img>
+      <h2 className="model-card-title">{title}</h2>
     </div>
   );
 }

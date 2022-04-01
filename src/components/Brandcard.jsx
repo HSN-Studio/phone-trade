@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Brandcard({ title = "other", handler }) {
+function Brandcard({ title = "Other Device", handler }) {
   let deviceNumber = 1;
   return (
     <div
@@ -14,7 +14,7 @@ function Brandcard({ title = "other", handler }) {
         <input name="make" id={title} value={title} type="radio"></input>
       </div>
       <div className="brand-logo">
-        {title === "other" ? (
+        {title === "Other Device" ? (
           <h2>{title}</h2>
         ) : (
           <img src={`/images/brand-logos/${title}-logo.png`} alt={title}></img>

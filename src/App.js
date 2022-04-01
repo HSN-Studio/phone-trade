@@ -42,7 +42,6 @@ function App() {
     let currentDevice = currentDevices[deviceNumber];
     currentDevice.model = modelName;
     setuserDevices(currentDevices);
-    console.log(currentDevices);
   };
   // JSX
   return (
@@ -56,17 +55,17 @@ function App() {
         <button onClick={() => nextClickHandler()}>Next</button>
       </div>
       <div className="section-2">
-        <h3>Select Model:</h3>
-        {devicesByBrand.map((device, i) => (
-          <ModelCard
-            key={`device-number${i}`}
-            title={device}
-            handler={modelClickHandler}
-          />
-        ))}
+        <div className="models-container">
+          {devicesByBrand.map((device, i) => (
+            <ModelCard
+              key={`device-number${i}`}
+              title={device}
+              handler={modelClickHandler}
+            />
+          ))}
+        </div>
       </div>
       <div className="section-3">
-        <h3>Device Details</h3>
         {userDevices[deviceNumber] && "model" in userDevices[deviceNumber] ? (
           <DeviceDetails
             deviceDetails={userDevices[deviceNumber]}
@@ -74,6 +73,7 @@ function App() {
           />
         ) : null}
       </div>
+      <div className="section-4"></div>
     </div>
   );
 }

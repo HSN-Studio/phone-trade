@@ -1,19 +1,86 @@
+* {
+  /* margin: 0; */
+  padding: 0;
+
+  font-family: roboto;
+  box-sizing: border-box;
+}
 .App {
-  background-color: red;
   padding: 2rem 5rem;
 }
 .brands-container {
-  display: flex;
+  justify-content: space-between;
+}
+.models-container {
+  margin-top: 2rem;
   justify-content: space-around;
+  align-content: flex-start;
+}
+.brands-container,
+.models-container {
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .brand-card {
   width: 350px;
-  height: 200px;
+}
+.model-card {
+  padding: 1rem;
+  width: 250px;
+  min-height: 300px;
+  margin: 1rem;
+}
+.model-card-title,
+.model-card-img,
+.model-card > input {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.brand-card,
+.model-card {
   background-color: white;
   border-radius: 1em;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.model-card > img {
+  max-width: 170px;
+  height: auto;
+}
+.section-1 > button {
+  padding: 1rem 2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.5rem;
+}
+
+.device-details-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.specifications,
+.summary {
+  width: 50%;
+}
+.summary > img {
+  max-width: 300px;
+  height: auto;
+}
+.specifications {
+  display: flex;
+  justify-content: center;
+}
+
+.specs-content > select {
+  margin-right: 1rem;
+  height: 3rem;
 }
