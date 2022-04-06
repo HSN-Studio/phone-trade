@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function DeviceDetails({ deviceDetails, allDevices }) {
+function DeviceDetails({ deviceDetails, allDevices, handler }) {
+  let deviceModelInfo = deviceDetails;
+  //Handler Functions
+
   //States
   const [device, setdevice] = useState({
     make: deviceDetails.make,
@@ -12,13 +15,21 @@ function DeviceDetails({ deviceDetails, allDevices }) {
     multiplier: 1,
   });
 
+  // Hooks
+  useEffect(() => {
+    setdevice(deviceModelInfo);
+  }, [deviceModelInfo]);
+  
+  useEffect(() => {
+    handler(device);
+  }, [device]);
+
   // Variables
   let variants = allDevices[deviceDetails.make].filter(
     (device) => device.phone === deviceDetails.model
   );
 
   //Methods
-  console.log(device);
   const storageHandler = (storage) => {
     if (!storage) return;
     let selectedDevice = variants.filter(

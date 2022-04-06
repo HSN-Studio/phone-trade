@@ -1,18 +1,27 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Brandcard from "./components/Brandcard";
-import ModelCard from "./components/ModelCard";
-import DeviceDetails from "./components/DeviceDetails";
+import Brand from "./components/Brand";
+import Model from "./components/Model";
+import Variant from "./components/Variant";
+import TradeIn from "./components/TradeIn";
 function App() {
   // States
   const [allDevices, setallDevices] = useState("");
   const [devicesByBrand, setdevicesByBrand] = useState([]);
   const [deviceNumber, setdeviceNumber] = useState(0);
   const [userDevices, setuserDevices] = useState([]);
+  const [stepNumber, setStepNumber] = useState(1);
+
   // Hooks
+  // Loads Info from Devices.json when App loads
   useEffect(() => {
     fetchDevices();
   }, []);
+
+  // Loads Devices By Brand List when brand Name is loaded!
+  useEffect(() => {
+    userDevices[deviceNumber] ? loadDevicesByBrand() : console.log();
+  }, [userDevices]);
 
   // Methods
   const fetchDevices = () => {
@@ -20,62 +29,81 @@ function App() {
       .then((res) => res.json())
       .then((data) => setallDevices(data));
   };
-  // Handler Function
-  const brandClickHandler = (brand) => {
+
+  const storeUserData = (brand) => {
     let currentDevices = [...userDevices];
     currentDevices[deviceNumber] = { make: brand };
     setuserDevices(currentDevices);
   };
 
-  const nextClickHandler = () => {
-    let selectedMakeDevices = allDevices[`${userDevices[deviceNumber].make}`];
-    if (!selectedMakeDevices) setdevicesByBrand([]);
+  const loadDevicesByBrand = () => {
+    let selectedBrandDevices = allDevices[`${userDevices[deviceNumber].make}`];
     let uniqueDevices = [
       ...new Map(
-        selectedMakeDevices.map((device) => [device["phone"], device.phone])
+        selectedBrandDevices.map((device) => [device["phone"], device.phone])
       ).values(),
     ];
     setdevicesByBrand(uniqueDevices);
   };
-  const modelClickHandler = (modelName) => {
+
+  // Handler Function
+  const brandHandler = (brand, step) => {
+    storeUserData(brand);
+    setStepNumber(step);
+  };
+
+  const modelHandler = (modelName, step) => {
     let currentDevices = [...userDevices];
     let currentDevice = currentDevices[deviceNumber];
     currentDevice.model = modelName;
     setuserDevices(currentDevices);
+    setStepNumber(step);
+  };
+
+  const variantHandler = (device, step) => {
+    let currentDevices = [...userDevices];
+    currentDevices[deviceNumber] = device;
+    setuserDevices(currentDevices);
+    setStepNumber(step);
+    console.log(device, step);
+  };
+
+  const tradeInHandler = (devices) => {
+    setuserDevices(devices);
+  };
+  // Render Method
+  const renderStep = (stepNumber) => {
+    switch (stepNumber) {
+      default:
+        return <Brand step={stepNumber} handler={brandHandler} />;
+        break;
+      case 2:
+        return (
+          <Model
+            devices={devicesByBrand}
+            step={stepNumber}
+            handler={modelHandler}
+          />
+        );
+        break;
+      case 3:
+        return (
+          <Variant
+            step={stepNumber}
+            handler={variantHandler}
+            allDevices={allDevices}
+            deviceDetails={userDevices[deviceNumber]}
+            deviceNumber={deviceNumber}
+          />
+        );
+        break;
+      case 4:
+        return <TradeIn devices={userDevices} handler={tradeInHandler} />;
+        break;
+    }
   };
   // JSX
-  return (
-    <div className="App">
-      <div className="section-1">
-        <div className="brands-container">
-          <Brandcard title="Apple" handler={brandClickHandler} />
-          <Brandcard title="Samsung" handler={brandClickHandler} />
-          <Brandcard handler={brandClickHandler} />
-        </div>
-        <button onClick={() => nextClickHandler()}>Next</button>
-      </div>
-      <div className="section-2">
-        <div className="models-container">
-          {devicesByBrand.map((device, i) => (
-            <ModelCard
-              key={`device-number${i}`}
-              title={device}
-              handler={modelClickHandler}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="section-3">
-        {userDevices[deviceNumber] && "model" in userDevices[deviceNumber] ? (
-          <DeviceDetails
-            deviceDetails={userDevices[deviceNumber]}
-            allDevices={allDevices}
-          />
-        ) : null}
-      </div>
-      <div className="section-4"></div>
-    </div>
-  );
+  return <div className="App">{renderStep(stepNumber)}</div>;
 }
 
 export default App;
