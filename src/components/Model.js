@@ -21,12 +21,18 @@ function Model({ devices, step, handler }) {
         ))}
       </div>
       <div className="section-nav section-2-nav">
-        <button onClick={() => console.log(step - 1)}>
+        <button onClick={() => handler(model, step - 1)}>
           Previous: Select Brand
         </button>
-        <button onClick={() => handler(model, step + 1)}>
-          Next: Device Details
-        </button>
+        {model ? (
+          <button onClick={() => handler(model, step + 1)}>
+            Next: Device Details
+          </button>
+        ) : (
+          <button disabled onClick={() => handler(model, step + 1)}>
+            Next: Device Details
+          </button>
+        )}
       </div>
     </div>
   );

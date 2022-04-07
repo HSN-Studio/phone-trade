@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import StorageGuide from "./Pop-ups/StorageGuide";
+import ConditionGuide from "./Pop-ups/ConditionGuide";
 
 function DeviceDetails({ deviceDetails, allDevices, handler }) {
   let deviceModelInfo = deviceDetails;
@@ -12,14 +14,14 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
     condition: "",
     price_new: "",
     worth: "",
-    multiplier: 1,
+    multiplier: "",
   });
 
   // Hooks
   useEffect(() => {
     setdevice(deviceModelInfo);
   }, [deviceModelInfo]);
-  
+
   useEffect(() => {
     handler(device);
   }, [device]);
@@ -31,18 +33,29 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
 
   //Methods
   const storageHandler = (storage) => {
-    if (!storage) return;
-    let selectedDevice = variants.filter(
-      (variant) => variant.storage == storage
-    )[0];
     let deviceUpdate = { ...device };
-    deviceUpdate.storage = storage;
-    deviceUpdate.price_new = selectedDevice.price_new;
-    setdevice(deviceUpdate);
+    if (storage === "") {
+      deviceUpdate.storage = "";
+      deviceUpdate.price_new = "";
+      deviceUpdate.worth = "";
+      setdevice(deviceUpdate);
+    }
+    if (storage !== "") {
+      let selectedDevice = variants.filter(
+        (variant) => variant.storage == storage
+      )[0];
+      deviceUpdate.storage = storage;
+      deviceUpdate.price_new = selectedDevice.price_new;
+      deviceUpdate.worth = deviceUpdate.price_new * deviceUpdate.multiplier;
+      setdevice(deviceUpdate);
+    }
   };
   const gradeHandler = (grade) => {
-    if (!grade) return;
     let deviceUpdate = { ...device };
+    if (grade === "") {
+      deviceUpdate.multiplier = "";
+      deviceUpdate.worth = "";
+    }
     deviceUpdate.condition = grade;
     if (grade === "Grade-A") {
       deviceUpdate.multiplier = 0.5;
@@ -65,32 +78,41 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
         <div className="specs-content">
           <h2>Select Device Specs:</h2>
           <h3>{deviceDetails.model}</h3>
-          <select
-            name="storage"
-            id="storage"
-            onChange={(e) => storageHandler(e.target.value)}
-          >
-            <option>Select Storage</option>
-            {variants.map((variant, i) => (
-              <option value={variant.storage} key={i}>
-                {variant.storage}
-              </option>
-            ))}
-          </select>
-          <select
-            name="Condition"
-            id="condition"
-            onChange={(e) => gradeHandler(e.target.value)}
-          >
-            <option>Select Condition</option>
-            <option value="Grade-A">Grade A (Good)</option>
-            <option value="Grade-B">Grade B (Fair)</option>
-            <option value="Grade-C">Grade C (Poor)</option>
-          </select>
-          {device.price_new ? (
-            <h3>Brand New Price: Ksh {device.price_new}</h3>
-          ) : null}
-          {device.multiplier !== 1 ? (
+          <div className="select-variant">
+            <label htmlFor="storage">Select Variant:</label>
+            <select
+              name="storage"
+              id="storage"
+              onChange={(e) => storageHandler(e.target.value)}
+            >
+              <option value=""></option>
+              {variants.map((variant, i) => (
+                <option value={variant.storage} key={i}>
+                  {variant.storage}
+                </option>
+              ))}
+            </select>
+            <div id="storage-guide-link">
+              <StorageGuide />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="condition">Select Condition:</label>
+            <select
+              name="Condition"
+              id="condition"
+              onChange={(e) => gradeHandler(e.target.value)}
+            >
+              <option value=""></option>
+              <option value="Grade-A">Grade A (Good)</option>
+              <option value="Grade-B">Grade B (Fair)</option>
+              <option value="Grade-C">Grade C (Poor)</option>
+            </select>
+            <div id="condition-guide-link">
+              <ConditionGuide />
+            </div>
+          </div>
+          {device.worth ? (
             <h3>Offered Price: Ksh {device.price_new * device.multiplier}</h3>
           ) : null}
         </div>

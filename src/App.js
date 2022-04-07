@@ -56,6 +56,8 @@ function App() {
     let currentDevices = [...userDevices];
     let currentDevice = currentDevices[deviceNumber];
     currentDevice.model = modelName;
+    currentDevice.multiplier = "";
+    currentDevice.worth = "";
     setuserDevices(currentDevices);
     setStepNumber(step);
   };
@@ -68,8 +70,9 @@ function App() {
     console.log(device, step);
   };
 
-  const tradeInHandler = (devices) => {
+  const tradeInHandler = (devices, step) => {
     setuserDevices(devices);
+    setStepNumber(step);
   };
   // Render Method
   const renderStep = (stepNumber) => {
@@ -98,7 +101,14 @@ function App() {
         );
         break;
       case 4:
-        return <TradeIn devices={userDevices} handler={tradeInHandler} />;
+        return (
+          <TradeIn
+            allDevices={allDevices}
+            devices={userDevices}
+            step={stepNumber}
+            handler={tradeInHandler}
+          />
+        );
         break;
     }
   };
@@ -116,3 +126,8 @@ export default App;
 //   condition: "A-Grade",
 //   priceUsed: "$250",
 // },
+
+
+// API Keys Woocommerce
+// ck_a3dd75042e32e5b9d04d3a1216a4386d30ddcc44
+// cs_a66a4bcff2a349122f17806f977561a310c9d74a

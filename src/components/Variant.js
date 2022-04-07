@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import DeviceDetails from "./DeviceDetails";
 
 function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
-  const [device, setDevice] = useState();
+  const [device, setDevice] = useState({
+    make: deviceDetails.make,
+    model: deviceDetails.model,
+    multiplier: deviceDetails.multiplier,
+    worth: deviceDetails.worth,
+  });
   // Handlers
   const deviceDetailsHandler = (device) => {
     setDevice(device);
-    console.log(device);
   };
 
   return (
@@ -24,12 +28,18 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
         </div>
       </div>
       <div className="section-nav section-3-nav">
-        <button onClick={() => console.log(step - 1)}>
+        <button onClick={() => handler(device, step - 1)}>
           Previous: Select Model
         </button>
-        <button onClick={() => handler(device, step + 1)}>
-          Next: Trade In Options
-        </button>
+        {device.worth ? (
+          <button onClick={() => handler(device, step + 1)}>
+            Next: Trade In Options
+          </button>
+        ) : (
+          <button disabled onClick={() => handler(device, step + 1)}>
+            Next: Trade In Options
+          </button>
+        )}
       </div>
     </div>
   );
