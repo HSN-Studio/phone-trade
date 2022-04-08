@@ -127,7 +127,6 @@ export default App;
 //   priceUsed: "$250",
 // },
 
-
 // API Keys Woocommerce
 // ck_a3dd75042e32e5b9d04d3a1216a4386d30ddcc44
 // cs_a66a4bcff2a349122f17806f977561a310c9d74a

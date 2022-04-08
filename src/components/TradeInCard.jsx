@@ -4,14 +4,25 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import TradeDevices from "./TradeWithCard";
 
 function TradeInCard({ device, index, allDevices }) {
   // State
   const [tradeInOption, setTradeInOption] = useState("");
+  const [tradeDevice, setTradeDevice] = useState({ name: "", price: "" });
 
   // LifeCycle
+
   // Handler
-  console.log(device, index, allDevices, tradeInOption);
+  const tradeDeviceHandler = (device) => {
+    setTradeDevice(device);
+    console.log(tradeDevice);
+  };
+
+  const tradeOptionHandler = (option) => {
+    setTradeInOption(option);
+    console.log(option);
+  };
   return (
     <div className="trade-in-card">
       <div className="trade-in-card-img">
@@ -37,11 +48,11 @@ function TradeInCard({ device, index, allDevices }) {
             Trade With:
           </InputLabel>
           <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
+            labelId="trade-select-helper-label"
+            id="trade-select-helper"
             value={tradeInOption}
-            label="Age"
-            onChange={(e) => setTradeInOption(e.target.value)}
+            label="Trade Option"
+            onChange={(e) => tradeOptionHandler(e.target.value)}
           >
             <MenuItem value="">
               <em>None</em>
@@ -51,6 +62,12 @@ function TradeInCard({ device, index, allDevices }) {
           </Select>
           <FormHelperText>Get cash or new device</FormHelperText>
         </FormControl>
+        {tradeInOption === "Device" ? (
+          <TradeDevices allDevices={allDevices} handler={tradeDeviceHandler} />
+        ) : null}
+        {tradeInOption === "Device" && tradeDevice.price ? (
+          <h2>Difference: Ksh {tradeDevice.price - device.worth} </h2>
+        ) : null}
       </div>
     </div>
   );
