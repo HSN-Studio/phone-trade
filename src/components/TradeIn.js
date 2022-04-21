@@ -10,7 +10,7 @@ function TradeIn({ allDevices, devices, step, handler }) {
       </div>
       <div className="container trade-in-container">
         {userDevices.map((device, i) => (
-          <TradeInCard device={device} index={i} allDevices={allDevices} />
+          <TradeInCard device={device} key={i} allDevices={allDevices} />
         ))}
       </div>
       <div className="section-nav section-4-nav">

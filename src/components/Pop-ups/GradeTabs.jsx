@@ -27,7 +27,7 @@ export default function LabTabs() {
           </TabList>
         </Box>
         <TabPanel value="A">
-          <h4>Your iPhone is Flawless condition if it:</h4>
+          <h4>Your device is Flawless condition if it:</h4>
           <ul>
             <li>
               appears to be new out of the box or still in its original package.
@@ -50,7 +50,7 @@ export default function LabTabs() {
           </ul>
         </TabPanel>
         <TabPanel value="B">
-          <h4>Your iPhone is Fair condition if it:</h4>
+          <h4>Your device is Fair condition if it:</h4>
           <ul>
             <li>powers on and holds charge.</li>
             <li>is fully functional, including all buttons and ports.</li>
@@ -69,7 +69,7 @@ export default function LabTabs() {
           </ul>
         </TabPanel>
         <TabPanel value="C">
-          <h4>Your iPhone is Damaged condition if any of these are true:</h4>
+          <h4>Your device is Damaged condition if any of these are true:</h4>
           <ul>
             <li>it does not power on or hold charge.</li>
             <li>
