@@ -4,6 +4,7 @@ import Brand from "./components/Brand";
 import Model from "./components/Model";
 import Variant from "./components/Variant";
 import TradeIn from "./components/TradeIn";
+import Contact from "./components/Contact";
 function App() {
   // States
   const [allDevices, setallDevices] = useState("");
@@ -113,7 +114,12 @@ function App() {
     }
   };
   // JSX
-  return <div className="App">{renderStep(stepNumber)}</div>;
+  return (
+    <div className="App">
+      {renderStep(stepNumber)}
+      <Contact />
+    </div>
+  );
 }
 
 export default App;

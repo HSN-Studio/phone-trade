@@ -21,15 +21,25 @@ function Model({ devices, step, handler }) {
         ))}
       </div>
       <div className="section-nav section-2-nav">
-        <button onClick={() => handler(model, step - 1)}>
+        <button
+          onClick={() => handler(model, step - 1)}
+          className="btn nav-btn"
+        >
           Previous: Select Brand
         </button>
         {model ? (
-          <button onClick={() => handler(model, step + 1)}>
+          <button
+            onClick={() => handler(model, step + 1)}
+            className="btn nav-btn"
+          >
             Next: Device Details
           </button>
         ) : (
-          <button disabled onClick={() => handler(model, step + 1)}>
+          <button
+            disabled
+            onClick={() => handler(model, step + 1)}
+            className="btn nav-btn"
+          >
             Next: Device Details
           </button>
         )}

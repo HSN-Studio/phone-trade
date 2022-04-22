@@ -69,14 +69,22 @@
   max-width: 170px;
   height: auto;
 }
-button {
+.btn {
   padding: 1rem 2rem;
   background-color: rgb(255, 255, 255);
   border: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 0.5rem;
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+  cursor: pointer;
 }
 
+.btn:hover {
+  position: relative;
+  top: -10px;
+}
 .device-details-container {
   display: flex;
   align-items: center;

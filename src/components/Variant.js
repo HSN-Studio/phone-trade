@@ -28,15 +28,25 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
         </div>
       </div>
       <div className="section-nav section-3-nav">
-        <button onClick={() => handler(device, step - 1)}>
+        <button
+          onClick={() => handler(device, step - 1)}
+          className="btn nav-btn"
+        >
           Previous: Select Model
         </button>
         {device.worth ? (
-          <button onClick={() => handler(device, step + 1)}>
+          <button
+            onClick={() => handler(device, step + 1)}
+            className="btn nav-btn"
+          >
             Next: Trade In Options
           </button>
         ) : (
-          <button disabled onClick={() => handler(device, step + 1)}>
+          <button
+            disabled
+            onClick={() => handler(device, step + 1)}
+            className="btn nav-btn"
+          >
             Next: Trade In Options
           </button>
         )}

@@ -14,10 +14,16 @@ function TradeIn({ allDevices, devices, step, handler }) {
         ))}
       </div>
       <div className="section-nav section-4-nav">
-        <button onClick={() => handler(userDevices, step - 1)}>
+        <button
+          onClick={() => handler(userDevices, step - 1)}
+          className="btn nav-btn"
+        >
           Previous: Device Specification
         </button>
-        <button onClick={() => handler(userDevices, step + 1)}>
+        <button
+          onClick={() => handler(userDevices, step + 1)}
+          className="btn nav-btn"
+        >
           Next: Contact Details
         </button>
       </div>

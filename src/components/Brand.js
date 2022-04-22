@@ -19,9 +19,14 @@ function Brand({ step, handler, test }) {
       </div>
       <div className="section-nav section-1-nav">
         {!brand || brand === "Other" ? (
-          <button disabled>Next: Device Model</button>
+          <button disabled className="btn nav-btn">
+            Next: Device Model
+          </button>
         ) : (
-          <button onClick={() => handler(brand, step + 1)}>
+          <button
+            onClick={() => handler(brand, step + 1)}
+            className="btn nav-btn"
+          >
             Next: Device Model
           </button>
         )}
