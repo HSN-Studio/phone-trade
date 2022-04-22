@@ -3,6 +3,12 @@ import TradeInCard from "./TradeInCard";
 function TradeIn({ allDevices, devices, step, handler }) {
   //State
   const [userDevices, setUserDevices] = useState(devices);
+
+  // Handler Functions
+  const getTradeOpt = (tradewith, tradeDeviceDetails) => {
+    handler()
+  };
+  // JSX
   return (
     <div className="section-4">
       <div className="step-title">

@@ -111,15 +111,12 @@ function App() {
           />
         );
         break;
+      case 5:
+        return <Contact devices={userDevices} step={stepNumber} />;
     }
   };
   // JSX
-  return (
-    <div className="App">
-      {renderStep(stepNumber)}
-      <Contact />
-    </div>
-  );
+  return <div className="App">{renderStep(stepNumber)}</div>;
 }
 
 export default App;

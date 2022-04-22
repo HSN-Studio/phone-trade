@@ -10,8 +10,9 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-function Contact() {
+function Contact({ devices, step }) {
   //States
+  const [ready, setReady] = useState(false);
   const [contactInfo, setcontactInfo] = useState({
     name: "",
     email: "",
@@ -42,6 +43,10 @@ function Contact() {
     contactInfotemp.time = dateTime;
     setcontactInfo(contactInfotemp);
     console.log(contactInfotemp);
+  };
+
+  const submitHandler = () => {
+    console.log(contactInfo);
   };
   // JSX
   return (
@@ -125,6 +130,26 @@ function Contact() {
           />
         </LocalizationProvider>
       ) : null}
+      <div className="section-nav section-5-nav">
+        <button
+          onClick={() => console.log(devices, step - 1)}
+          className="btn nav-btn"
+        >
+          Previous: Trade-In Options
+        </button>
+        {ready ? (
+          <button
+            onClick={() => submitHandler(devices, step + 1)}
+            className="btn nav-btn"
+          >
+            Submit
+          </button>
+        ) : (
+          <button disabled className="btn nav-btn">
+            Submit
+          </button>
+        )}
+      </div>
     </div>
   );
 }

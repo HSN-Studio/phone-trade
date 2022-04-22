@@ -5,11 +5,17 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TradeDevices from "./TradeWithCard";
+import { tableBodyClasses } from "@mui/material";
 
 function TradeInCard({ device, index, allDevices }) {
   // State
   const [tradeInOption, setTradeInOption] = useState("");
-  const [tradeDevice, setTradeDevice] = useState({ name: "", price: "" });
+  const [tradeInCondition, setTradeInCondition] = useState("");
+  const [tradeDevice, setTradeDevice] = useState({
+    name: "",
+    price: "",
+    preOwned_price: "",
+  });
 
   // LifeCycle
 
@@ -21,7 +27,9 @@ function TradeInCard({ device, index, allDevices }) {
 
   const tradeOptionHandler = (option) => {
     setTradeInOption(option);
-    console.log(option);
+  };
+  const tradeConditionHandler = (condition) => {
+    setTradeInCondition(condition);
   };
   return (
     <div className="trade-in-card">
@@ -40,7 +48,7 @@ function TradeInCard({ device, index, allDevices }) {
         <p>{`Value: ${device.worth} ksh`}</p>
       </div>
       <div>
-        <FormControl sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
           <InputLabel
             id="demo-simple-select-helper-label"
             sx={{ backgroundColor: "white" }}
@@ -49,6 +57,7 @@ function TradeInCard({ device, index, allDevices }) {
           </InputLabel>
           <Select
             labelId="trade-select-helper-label"
+            name="method"
             id="trade-select-helper"
             value={tradeInOption}
             label="Trade Option"
@@ -57,15 +66,42 @@ function TradeInCard({ device, index, allDevices }) {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={"Cash"}>Cash</MenuItem>
-            <MenuItem value={"Device"}>Device</MenuItem>
+            <MenuItem value="Cash">Cash</MenuItem>
+            <MenuItem value="Device">Device</MenuItem>
           </Select>
           <FormHelperText>Get cash or new device</FormHelperText>
         </FormControl>
+
         {tradeInOption === "Device" ? (
           <TradeDevices allDevices={allDevices} handler={tradeDeviceHandler} />
         ) : null}
+
+        {tradeDevice.price ? (
+          <FormControl fullWidth>
+            <InputLabel
+              id="demo-simple-select-helper-label"
+              sx={{ backgroundColor: "white" }}
+            >
+              Device Condition:
+            </InputLabel>
+            <Select
+              labelId="trade-select-helper-label"
+              id="trade-select-helper"
+              name="condition"
+              value={tradeInCondition}
+              label="Trade Option"
+              onChange={(e) => tradeConditionHandler(e.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"New"}>New</MenuItem>
+              <MenuItem value={"PRE Owned"}>Pre Owned</MenuItem>
+            </Select>
+          </FormControl>
+        ) : null}
         {tradeInOption === "Device" && tradeDevice.price ? (
+          
           <h2>Difference: Ksh {tradeDevice.price - device.worth} </h2>
         ) : null}
       </div>
