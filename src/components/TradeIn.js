@@ -6,8 +6,19 @@ function TradeIn({ allDevices, devices, step, handler }) {
 
   // Handler Functions
   const getTradeOpt = (device, index) => {
-    console.table(device);
-    console.log(userDevices);
+    let userDevicestemp = userDevices.map((userDevice, i) => {
+      if (i === index) {
+        userDevice.tradeMethod = device.tradeMethod;
+        userDevice.tradeDevice = device.tradeDevice;
+        userDevice.tradeDeviceCondition = device.tradeDeviceCondition;
+        userDevice.tradeDevicePriceNew = device.tradeDevicePriceNew;
+        userDevice.tradeDevicePricePreOwned = device.tradeDevicePricePreOwned;
+        userDevice.tradeDifference = device.tradeDifference;
+      }
+      return userDevice;
+    });
+    setUserDevices(userDevicestemp);
+    console.table(userDevices);
   };
   // JSX
   return (
