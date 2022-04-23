@@ -5,8 +5,8 @@ function TradeIn({ allDevices, devices, step, handler }) {
   const [userDevices, setUserDevices] = useState(devices);
 
   // Handler Functions
-  const getTradeOpt = (tradeDetails, index) => {
-    console.log(tradeDetails, index);
+  const getTradeOpt = (device, index) => {
+    console.table(device);
   };
   // JSX
   return (

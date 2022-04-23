@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -26,6 +26,10 @@ function TradeInCard({ device, index, allDevices, handler }) {
   });
 
   // LifeCycle
+  useEffect(() => {
+    let deviceCompleted = { ...device, ...tradeDetails };
+    handler(deviceCompleted, index);
+  }, [tradeDetails]);
 
   // Handler
   const tradeDeviceHandler = (device) => {
@@ -58,7 +62,6 @@ function TradeInCard({ device, index, allDevices, handler }) {
         tradeDetailstemp.tradeDevicePricePreOwned - device.worth;
     setTradeDetails(tradeDetailstemp);
     setTradeInCondition(condition);
-    handler(tradeDetails, index);
   };
   return (
     <div className="trade-in-card">
