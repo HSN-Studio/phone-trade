@@ -4,6 +4,10 @@ function TradeIn({ allDevices, devices, step, handler }) {
   //State
   const [userDevices, setUserDevices] = useState(devices);
 
+  // Regular Functions
+  const userDevicesWorth = (userDevice) =>
+    userDevice.tradeMethod === "Cash" ||
+    (userDevice.tradeDifference !== "" && userDevice.tradeDifference !== false);
   // Handler Functions
   const getTradeOpt = (device, index) => {
     let userDevicestemp = userDevices.map((userDevice, i) => {
@@ -18,7 +22,6 @@ function TradeIn({ allDevices, devices, step, handler }) {
       return userDevice;
     });
     setUserDevices(userDevicestemp);
-    console.table(userDevices);
   };
   // JSX
   return (
@@ -44,13 +47,22 @@ function TradeIn({ allDevices, devices, step, handler }) {
         >
           Previous: Device Specification
         </button>
-        {}
-        <button
-          onClick={() => handler(userDevices, step + 1)}
-          className="btn nav-btn"
-        >
-          Next: Contact Details
-        </button>
+        {userDevices.every(userDevicesWorth) ? (
+          <button
+            onClick={() => handler(userDevices, step + 1)}
+            className="btn nav-btn"
+          >
+            Next: Contact Details
+          </button>
+        ) : (
+          <button
+            disabled
+            onClick={() => handler(userDevices, step + 1)}
+            className="btn nav-btn"
+          >
+            Next: Contact Details
+          </button>
+        )}
       </div>
     </div>
   );
