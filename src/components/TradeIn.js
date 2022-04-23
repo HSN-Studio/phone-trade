@@ -7,6 +7,7 @@ function TradeIn({ allDevices, devices, step, handler }) {
   // Handler Functions
   const getTradeOpt = (device, index) => {
     console.table(device);
+    console.log(userDevices);
   };
   // JSX
   return (
@@ -32,6 +33,7 @@ function TradeIn({ allDevices, devices, step, handler }) {
         >
           Previous: Device Specification
         </button>
+        {}
         <button
           onClick={() => handler(userDevices, step + 1)}
           className="btn nav-btn"

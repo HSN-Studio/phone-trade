@@ -75,6 +75,11 @@ function App() {
     setuserDevices(devices);
     setStepNumber(step);
   };
+
+  const contactHandler = (devices, step) => {
+    setuserDevices(devices);
+    setStepNumber(step);
+  };
   // Render Method
   const renderStep = (stepNumber) => {
     switch (stepNumber) {
@@ -112,7 +117,13 @@ function App() {
         );
         break;
       case 5:
-        return <Contact devices={userDevices} step={stepNumber} />;
+        return (
+          <Contact
+            devices={userDevices}
+            step={stepNumber}
+            handler={contactHandler}
+          />
+        );
     }
   };
   // JSX

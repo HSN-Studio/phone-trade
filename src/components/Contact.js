@@ -10,7 +10,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-function Contact({ devices, step }) {
+function Contact({ devices, step, handler }) {
   //States
   const [ready, setReady] = useState(false);
   const [contactInfo, setcontactInfo] = useState({
@@ -132,7 +132,7 @@ function Contact({ devices, step }) {
       ) : null}
       <div className="section-nav section-5-nav">
         <button
-          onClick={() => console.log(devices, step - 1)}
+          onClick={() => handler(devices, step - 1)}
           className="btn nav-btn"
         >
           Previous: Trade-In Options

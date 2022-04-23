@@ -39,8 +39,6 @@ function TradeInCard({ device, index, allDevices, handler }) {
     tradeDetailstemp.tradeDevicePricePreOwned = device.preOwned_price;
     setTradeDetails(tradeDetailstemp);
     setTradeDevice(device);
-
-    console.log(device);
   };
 
   const tradeOptionHandler = (option) => {
