@@ -5,8 +5,8 @@ function TradeIn({ allDevices, devices, step, handler }) {
   const [userDevices, setUserDevices] = useState(devices);
 
   // Handler Functions
-  const getTradeOpt = (tradeDeviceDetails) => {
-    
+  const getTradeOpt = (tradeDetails, index) => {
+    console.log(tradeDetails, index);
   };
   // JSX
   return (
@@ -16,7 +16,13 @@ function TradeIn({ allDevices, devices, step, handler }) {
       </div>
       <div className="container trade-in-container">
         {userDevices.map((device, i) => (
-          <TradeInCard device={device} key={i} allDevices={allDevices} />
+          <TradeInCard
+            device={device}
+            index={i}
+            allDevices={allDevices}
+            handler={getTradeOpt}
+            key={i}
+          />
         ))}
       </div>
       <div className="section-nav section-4-nav">

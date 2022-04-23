@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 import TradeDevices from "./TradeWithCard";
 import { tableBodyClasses } from "@mui/material";
 
-function TradeInCard({ device, index, allDevices }) {
+function TradeInCard({ device, index, allDevices, handler }) {
   // State
   const [tradeInOption, setTradeInOption] = useState("");
   const [tradeInCondition, setTradeInCondition] = useState("");
@@ -44,6 +44,7 @@ function TradeInCard({ device, index, allDevices }) {
     tradeDetailstemp.tradeMethod = option;
     setTradeDetails(tradeDetailstemp);
     setTradeInOption(option);
+    handler(tradeDetails, index);
   };
   const tradeConditionHandler = (condition) => {
     let tradeDetailstemp = { ...tradeDetails };
@@ -57,7 +58,7 @@ function TradeInCard({ device, index, allDevices }) {
         tradeDetailstemp.tradeDevicePricePreOwned - device.worth;
     setTradeDetails(tradeDetailstemp);
     setTradeInCondition(condition);
-    console.log(tradeDetails);
+    handler(tradeDetails, index);
   };
   return (
     <div className="trade-in-card">
@@ -104,7 +105,7 @@ function TradeInCard({ device, index, allDevices }) {
           <TradeDevices allDevices={allDevices} handler={tradeDeviceHandler} />
         ) : null}
 
-        {tradeDevice.price ? (
+        {tradeInOption === "Device" && tradeDevice.price ? (
           <FormControl fullWidth>
             <InputLabel
               id="demo-simple-select-helper-label"
@@ -130,12 +131,13 @@ function TradeInCard({ device, index, allDevices }) {
             </Select>
           </FormControl>
         ) : null}
-        {tradeInCondition === "New" ? (
-          <h2>Difference: Ksh {tradeDevice.price - device.worth} </h2>
+        {tradeDetails.tradeMethod === "Device" &&
+        tradeDetails.tradeDeviceCondition ? (
+          <h2>Difference: Ksh {tradeDetails.tradeDifference} </h2>
         ) : null}
-        {tradeInCondition === "PRE Owned" ? (
+        {/* {tradeInCondition === "PRE Owned" ? (
           <h2>Difference: Ksh {tradeDevice.preOwned_price - device.worth} </h2>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );
