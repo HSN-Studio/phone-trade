@@ -11,7 +11,6 @@ export default function TradeDevices({ allDevices, handler }) {
   // LifeCycle Methods
   useEffect(() => {
     allModels();
-    console.log("Tradewith");
   }, []);
 
   const allModels = () => {

@@ -16,20 +16,48 @@ function TradeInCard({ device, index, allDevices }) {
     price: "",
     preOwned_price: "",
   });
+  const [tradeDetails, setTradeDetails] = useState({
+    tradeMethod: "",
+    tradeDevice: "",
+    tradeDeviceCondition: "",
+    tradeDevicePriceNew: "",
+    tradeDevicePricePreOwned: "",
+    tradeDifference: "",
+  });
 
   // LifeCycle
 
   // Handler
   const tradeDeviceHandler = (device) => {
+    let tradeDetailstemp = { ...tradeDetails };
+    tradeDetailstemp.tradeDevice = device.label;
+    tradeDetailstemp.tradeDevicePriceNew = device.price;
+    tradeDetailstemp.tradeDevicePricePreOwned = device.preOwned_price;
+    setTradeDetails(tradeDetailstemp);
     setTradeDevice(device);
-    console.log(tradeDevice);
+
+    console.log(device);
   };
 
   const tradeOptionHandler = (option) => {
+    let tradeDetailstemp = { ...tradeDetails };
+    tradeDetailstemp.tradeMethod = option;
+    setTradeDetails(tradeDetailstemp);
     setTradeInOption(option);
   };
   const tradeConditionHandler = (condition) => {
+    let tradeDetailstemp = { ...tradeDetails };
+    tradeDetailstemp.tradeDeviceCondition = condition;
+    if (tradeDetailstemp.tradeDeviceCondition === "New")
+      tradeDetailstemp.tradeDifference =
+        tradeDetailstemp.tradeDevicePriceNew - device.worth;
+
+    if (tradeDetailstemp.tradeDeviceCondition === "PRE Owned")
+      tradeDetailstemp.tradeDifference =
+        tradeDetailstemp.tradeDevicePricePreOwned - device.worth;
+    setTradeDetails(tradeDetailstemp);
     setTradeInCondition(condition);
+    console.log(tradeDetails);
   };
   return (
     <div className="trade-in-card">
@@ -96,13 +124,17 @@ function TradeInCard({ device, index, allDevices }) {
                 <em>None</em>
               </MenuItem>
               <MenuItem value={"New"}>New</MenuItem>
-              <MenuItem value={"PRE Owned"}>Pre Owned</MenuItem>
+              {tradeDevice.preOwned_price ? (
+                <MenuItem value={"PRE Owned"}>Pre Owned</MenuItem>
+              ) : null}
             </Select>
           </FormControl>
         ) : null}
-        {tradeInOption === "Device" && tradeDevice.price ? (
-          
+        {tradeInCondition === "New" ? (
           <h2>Difference: Ksh {tradeDevice.price - device.worth} </h2>
+        ) : null}
+        {tradeInCondition === "PRE Owned" ? (
+          <h2>Difference: Ksh {tradeDevice.preOwned_price - device.worth} </h2>
         ) : null}
       </div>
     </div>
