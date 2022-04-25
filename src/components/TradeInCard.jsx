@@ -78,9 +78,6 @@ function TradeInCard({ device, index, allDevices, handler }) {
             label="Trade Option"
             onChange={(e) => tradeOptionHandler(e.target.value)}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             <MenuItem value="Cash">Cash</MenuItem>
             <MenuItem value="Device">Device</MenuItem>
           </Select>
@@ -107,9 +104,6 @@ function TradeInCard({ device, index, allDevices, handler }) {
               label="Trade Option"
               onChange={(e) => tradeConditionHandler(e.target.value)}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
               <MenuItem value={"New"}>New</MenuItem>
               {tradeDevice.preOwned_price ? (
                 <MenuItem value={"PRE Owned"}>Pre Owned</MenuItem>
@@ -128,8 +122,8 @@ function TradeInCard({ device, index, allDevices, handler }) {
         tradeDetails.tradeDeviceCondition &&
         tradeDetails.tradeDifference < 0 ? (
           <h2 className="accent-text">
-            You Get (+Device): Ksh{" "}
-            {tradeDetails.tradeDifference.toString().replace("-", "")}{" "}
+            You Get: Ksh{" "}
+            {tradeDetails.tradeDifference.toString().replace("-", "")} + Device
           </h2>
         ) : null}
         {/* {tradeInCondition === "PRE Owned" ? (

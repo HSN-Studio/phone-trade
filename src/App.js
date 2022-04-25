@@ -83,7 +83,6 @@ function App() {
   const addDeviceHandler = (deviceNumber, step) => {
     setdeviceNumber(deviceNumber);
     setStepNumber(step);
-    console.log(deviceNumber);
   };
   // Render Method
   const renderStep = (stepNumber) => {

@@ -3,9 +3,6 @@ import Brandcard from "./Brandcard";
 function Brand({ step, handler, deviceNumber }) {
   // States
   const [brand, setBrand] = useState();
-  useEffect(() => {
-    console.log(deviceNumber);
-  }, []);
 
   // Handler Functions
   const brandClickHandler = (brand) => {
