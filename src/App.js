@@ -54,6 +54,7 @@ function App() {
   };
 
   const modelHandler = (modelName, step) => {
+    console.log(userDevices);
     let currentDevices = [...userDevices];
     let currentDevice = currentDevices[deviceNumber];
     currentDevice.model = modelName;
@@ -68,7 +69,6 @@ function App() {
     currentDevices[deviceNumber] = device;
     setuserDevices(currentDevices);
     setStepNumber(step);
-    console.log(device, step);
   };
 
   const tradeInHandler = (devices, step) => {
@@ -79,6 +79,11 @@ function App() {
   const contactHandler = (devices, step) => {
     setuserDevices(devices);
     setStepNumber(step);
+  };
+  const addDeviceHandler = (deviceNumber, step) => {
+    setdeviceNumber(deviceNumber);
+    setStepNumber(step);
+    console.log(deviceNumber);
   };
   // Render Method
   const renderStep = (stepNumber) => {
@@ -113,6 +118,7 @@ function App() {
             devices={userDevices}
             step={stepNumber}
             handler={tradeInHandler}
+            deviceNumber={deviceNumber}
           />
         );
         break;
@@ -122,6 +128,8 @@ function App() {
             devices={userDevices}
             step={stepNumber}
             handler={contactHandler}
+            deviceNumber={deviceNumber}
+            addHandler={addDeviceHandler}
           />
         );
     }

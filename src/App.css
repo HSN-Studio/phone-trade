@@ -133,3 +133,7 @@
 .grade-tabs button {
   box-shadow: none;
 }
+
+#mui-8-helper-text {
+  color: red !important;
+}

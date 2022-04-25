@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TradeInCard from "./TradeInCard";
-function TradeIn({ allDevices, devices, step, handler }) {
+function TradeIn({ allDevices, devices, step, handler, deviceNumber }) {
   //State
   const [userDevices, setUserDevices] = useState(devices);
 
@@ -30,15 +30,17 @@ function TradeIn({ allDevices, devices, step, handler }) {
         <h1>Trade In Options</h1>
       </div>
       <div className="container trade-in-container">
-        {userDevices.map((device, i) => (
-          <TradeInCard
-            device={device}
-            index={i}
-            allDevices={allDevices}
-            handler={getTradeOpt}
-            key={i}
-          />
-        ))}
+        {userDevices.map((device, i) =>
+          i === deviceNumber ? (
+            <TradeInCard
+              device={device}
+              index={i}
+              allDevices={allDevices}
+              handler={getTradeOpt}
+              key={i}
+            />
+          ) : null
+        )}
       </div>
       <div className="section-nav section-4-nav">
         <button
