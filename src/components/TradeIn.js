@@ -52,7 +52,7 @@ function TradeIn({ allDevices, devices, step, handler, deviceNumber }) {
         {userDevices.every(userDevicesWorth) ? (
           <button
             onClick={() => handler(userDevices, step + 1)}
-            className="btn nav-btn"
+            className="btn nav-btn nav-btn-next"
           >
             Next: Contact Details
           </button>
@@ -60,7 +60,7 @@ function TradeIn({ allDevices, devices, step, handler, deviceNumber }) {
           <button
             disabled
             onClick={() => handler(userDevices, step + 1)}
-            className="btn nav-btn"
+            className="btn nav-btn "
           >
             Next: Contact Details
           </button>

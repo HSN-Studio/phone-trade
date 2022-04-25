@@ -112,11 +112,6 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
               <ConditionGuide />
             </div>
           </div>
-          {device.worth ? (
-            <h4 className="offered-price accent-text">
-              Offered Price: KSE {device.price_new * device.multiplier}
-            </h4>
-          ) : null}
         </div>
       </div>
       <div className="summary">
@@ -126,6 +121,11 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
             .replaceAll(" ", "-")}.jpg`}
           alt={deviceDetails.model}
         ></img>
+        {device.worth ? (
+          <h2 className="offered-price accent-text">
+            OFFER: KSE {device.price_new * device.multiplier}
+          </h2>
+        ) : null}
       </div>
     </div>
   );

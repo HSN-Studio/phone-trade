@@ -9,12 +9,12 @@ function Brandcard({ title, handler }) {
         handler(title);
       }}
     >
-      <div>
+      <div className="brand-logo">
         <input name="make" id={title} value={title} type="radio"></input>
       </div>
       <div className="brand-logo">
         {title === "Other" ? (
-          <h2>Other Device</h2>
+          <h2>OTHER DEVICE</h2>
         ) : (
           <img src={`/images/brand-logos/${title}-logo.png`} alt={title}></img>
         )}

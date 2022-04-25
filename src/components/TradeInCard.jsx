@@ -5,7 +5,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TradeDevices from "./TradeWithCard";
-import { tableBodyClasses } from "@mui/material";
 
 function TradeInCard({ device, index, allDevices, handler }) {
   // State
@@ -121,13 +120,15 @@ function TradeInCard({ device, index, allDevices, handler }) {
         {tradeDetails.tradeMethod === "Device" &&
         tradeDetails.tradeDeviceCondition &&
         tradeDetails.tradeDifference >= 0 ? (
-          <h2>You Pay: Ksh {tradeDetails.tradeDifference} </h2>
+          <h2 className="accent-text">
+            You Pay: KSH {tradeDetails.tradeDifference}{" "}
+          </h2>
         ) : null}
         {tradeDetails.tradeMethod === "Device" &&
         tradeDetails.tradeDeviceCondition &&
         tradeDetails.tradeDifference < 0 ? (
-          <h2>
-            You will still get: Ksh{" "}
+          <h2 className="accent-text">
+            You Get (+Device): Ksh{" "}
             {tradeDetails.tradeDifference.toString().replace("-", "")}{" "}
           </h2>
         ) : null}
@@ -145,13 +146,12 @@ function TradeInCard({ device, index, allDevices, handler }) {
           ></img>
         </div>
         <div className="trade-in-card-summary">
-          <h3>{device.model}</h3>
+          <h2>{device.model}</h2>
           <p>{`Variant: ${device.storage}`}</p>
           <p>{`Condition: ${device.condition}`}</p>
-          <p>{`Value: ${device.worth} ksh`}</p>
+          <p>{`Value: KSH ${device.worth} `}</p>
         </div>
       </div>
-      
     </div>
   );
 }

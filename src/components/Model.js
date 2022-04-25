@@ -30,7 +30,7 @@ function Model({ devices, step, handler }) {
         {model ? (
           <button
             onClick={() => handler(model, step + 1)}
-            className="btn nav-btn"
+            className="btn nav-btn nav-btn-next"
           >
             Next: Device Details
           </button>
@@ -38,7 +38,7 @@ function Model({ devices, step, handler }) {
           <button
             disabled
             onClick={() => handler(model, step + 1)}
-            className="btn nav-btn"
+            className="btn nav-btn "
           >
             Next: Device Details
           </button>

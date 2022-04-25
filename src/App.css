@@ -2,7 +2,7 @@
   /* margin: 0; */
   padding: 0;
 
-  font-family: roboto;
+  font-family: Montserrat;
   box-sizing: border-box;
 }
 .App {
@@ -10,6 +10,17 @@
 }
 .container {
   margin-bottom: 2rem;
+}
+h2 {
+  font-weight: 800;
+}
+p,
+label {
+  font-weight: 500;
+}
+
+.accent-text {
+  color: #1976d2;
 }
 .section-nav {
   display: flex;
@@ -20,13 +31,17 @@
   margin-bottom: 2rem;
 }
 .step-title > h1 {
-  font-weight: bold;
+  font-weight: 900;
   font-size: calc(2.29446vw + 9.31549px);
   text-align: center;
   margin: 0;
 }
 .brands-container {
   justify-content: center;
+}
+.brand-logo img {
+  max-height: 90px;
+  width: auto;
 }
 .models-container {
   justify-content: space-around;
@@ -38,7 +53,18 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.brand-card,
+.model-card {
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+  cursor: pointer;
+}
+.brand-card:hover,
+.model-card:hover {
+  position: relative;
+  top: -10px;
+}
 .brand-card {
   width: 350px;
   min-height: 200px;
@@ -67,13 +93,49 @@
   justify-content: space-evenly;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+.brand-card input,
+.model-card input {
+  width: 20px;
+  height: 30px;
+}
 
 .model-card > img,
 .trade-in-card > img {
   max-width: 170px;
   height: auto;
 }
+
+.trade-options-form,
+.trade-options-summary {
+  width: 50%;
+  padding: 0 2rem;
+}
+.trade-in-card-summary * {
+  margin: 0.5rem;
+}
+.trade-options-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.trade-in-card-img,
+.trade-in-card-summary {
+  display: flex;
+  justify-content: center;
+}
+.trade-in-card-img > img {
+  max-width: 300px;
+  height: auto;
+}
+.trade-in-card-summary {
+  flex-direction: column;
+  align-items: center;
+}
 .btn {
+  font-weight: 600;
   padding: 1rem 2rem;
   background-color: rgb(255, 255, 255);
   border: none;
@@ -83,6 +145,10 @@
   top: 0;
   transition: top ease 0.5s;
   cursor: pointer;
+}
+.nav-btn-next {
+  background-color: #1976d2;
+  color: white;
 }
 
 .btn:hover {
@@ -96,9 +162,14 @@
 
 .specifications,
 .summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
 }
-
+.select-variant {
+  margin-bottom: 1rem;
+}
 .select-variant > label {
   display: block;
 }
@@ -106,14 +177,13 @@
   max-width: 300px;
   height: auto;
 }
-.specifications {
-  display: flex;
-  justify-content: center;
-}
 
 .specs-content select {
   width: 100%;
   height: 3rem;
+  border-radius: 0.2rem;
+  border: 1px solid #e7e7e7;
+  padding: 1rem;
 }
 
 .section-4-container {
@@ -128,10 +198,6 @@
   border-radius: 1em;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.trade-in-card-img > img {
-  max-width: 200px;
-  height: auto;
 }
 
 .grade-tabs button {

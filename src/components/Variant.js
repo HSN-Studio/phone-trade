@@ -9,7 +9,6 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
     worth: deviceDetails.worth,
   });
 
-
   // Handlers
   const deviceDetailsHandler = (device) => {
     setDevice(device);
@@ -39,7 +38,7 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
         {device.worth ? (
           <button
             onClick={() => handler(device, step + 1)}
-            className="btn nav-btn"
+            className="btn nav-btn nav-btn-next"
           >
             Next: Trade In Options
           </button>

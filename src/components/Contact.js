@@ -153,7 +153,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           <TextField
             required
             error={nameError === true}
-            helperText={nameError ? "*Invalid Name (only use letters A-Z)" : ""}
+            helperText={nameError ? "Invalid Name (only use letters A-Z)" : ""}
             name="name"
             label="Name"
             type="text"
@@ -190,7 +190,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             name="address"
             label="Address"
             error={addressError === true}
-            helperText={addressError ? "Address field can not be empty!" : ""}
+            helperText={addressError ? "Address field can not be empty" : ""}
             type="text"
             fullWidth
             onChange={inputHandler}
@@ -201,7 +201,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             name="city"
             label="City"
             error={cityError === true}
-            helperText={cityError ? "City field can not be empty!" : ""}
+            helperText={cityError ? "Invalid Input (only use letters A-Z)" : ""}
             type="text"
             onChange={inputHandler}
             onBlur={cityValidator}
@@ -269,11 +269,14 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
               Previous: Trade-In Options
             </button>
             {ready ? (
-              <button onClick={() => submitHandler()} className="btn nav-btn">
+              <button
+                onClick={() => submitHandler()}
+                className="btn nav-btn nav-btn-next"
+              >
                 Submit
               </button>
             ) : (
-              <button disabled className="btn nav-btn">
+              <button disabled className="btn nav-btn ">
                 Submit
               </button>
             )}
