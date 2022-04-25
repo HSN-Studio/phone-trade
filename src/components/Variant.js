@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DeviceDetails from "./DeviceDetails";
 
 function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
@@ -8,6 +8,8 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
     multiplier: deviceDetails.multiplier,
     worth: deviceDetails.worth,
   });
+
+
   // Handlers
   const deviceDetailsHandler = (device) => {
     setDevice(device);

@@ -113,7 +113,9 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
             </div>
           </div>
           {device.worth ? (
-            <h3>Offered Price: KSE {device.price_new * device.multiplier}</h3>
+            <h4 className="offered-price accent-text">
+              Offered Price: KSE {device.price_new * device.multiplier}
+            </h4>
           ) : null}
         </div>
       </div>

@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Brandcard from "./Brandcard";
-function Brand({ step, handler, test }) {
+function Brand({ step, handler, deviceNumber }) {
   // States
   const [brand, setBrand] = useState();
+  useEffect(() => {
+    console.log(deviceNumber);
+  }, []);
+
   // Handler Functions
   const brandClickHandler = (brand) => {
     setBrand(brand);
@@ -15,7 +19,9 @@ function Brand({ step, handler, test }) {
       <div className="container brands-container">
         <Brandcard title="Apple" handler={brandClickHandler} />
         <Brandcard title="Samsung" handler={brandClickHandler} />
-        <Brandcard title="Other" handler={brandClickHandler} />
+        {deviceNumber < 1 ? (
+          <Brandcard title="Other" handler={brandClickHandler} />
+        ) : null}
       </div>
       <div className="section-nav section-1-nav">
         {!brand || brand === "Other" ? (

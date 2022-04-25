@@ -89,7 +89,13 @@ function App() {
   const renderStep = (stepNumber) => {
     switch (stepNumber) {
       default:
-        return <Brand step={stepNumber} handler={brandHandler} />;
+        return (
+          <Brand
+            step={stepNumber}
+            handler={brandHandler}
+            deviceNumber={deviceNumber}
+          />
+        );
         break;
       case 2:
         return (

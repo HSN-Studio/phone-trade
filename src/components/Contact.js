@@ -56,6 +56,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
 
   useEffect(() => {
     console.log(contactInfo, devices);
+    balanceCalculator();
   }, [contactInfo]);
 
   //Handler Functions
@@ -128,9 +129,17 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     )
       console.log("true");
   };
-
+  const balanceCalculator = () => {
+    let balance;
+    devices.map((device) => {
+      device.tradeDifference !== ""
+        ? console.log(device.tradeDifference)
+        : console.log(device.worth);
+    });
+  };
   const submitHandler = () => {
     inputsValidator();
+    balanceCalculator();
   };
 
   // JSX

@@ -62,22 +62,8 @@ function TradeInCard({ device, index, allDevices, handler }) {
     setTradeInCondition(condition);
   };
   return (
-    <div className="trade-in-card">
-      <div className="trade-in-card-img">
-        <img
-          src={`/images/model-images/${device.model
-            .toLowerCase()
-            .replaceAll(" ", "-")}.jpg`}
-          alt={device.model}
-        ></img>
-      </div>
-      <div className="trade-in-card-summary">
-        <h3>{device.model}</h3>
-        <p>{`Variant: ${device.storage}`}</p>
-        <p>{`Condition: ${device.condition}`}</p>
-        <p>{`Value: ${device.worth} ksh`}</p>
-      </div>
-      <div>
+    <div className="trade-options-container">
+      <div className="trade-options-form">
         <FormControl fullWidth>
           <InputLabel
             id="demo-simple-select-helper-label"
@@ -133,13 +119,39 @@ function TradeInCard({ device, index, allDevices, handler }) {
           </FormControl>
         ) : null}
         {tradeDetails.tradeMethod === "Device" &&
-        tradeDetails.tradeDeviceCondition ? (
-          <h2>Difference: Ksh {tradeDetails.tradeDifference} </h2>
+        tradeDetails.tradeDeviceCondition &&
+        tradeDetails.tradeDifference >= 0 ? (
+          <h2>You Pay: Ksh {tradeDetails.tradeDifference} </h2>
+        ) : null}
+        {tradeDetails.tradeMethod === "Device" &&
+        tradeDetails.tradeDeviceCondition &&
+        tradeDetails.tradeDifference < 0 ? (
+          <h2>
+            You will still get: Ksh{" "}
+            {tradeDetails.tradeDifference.toString().replace("-", "")}{" "}
+          </h2>
         ) : null}
         {/* {tradeInCondition === "PRE Owned" ? (
           <h2>Difference: Ksh {tradeDevice.preOwned_price - device.worth} </h2>
         ) : null} */}
       </div>
+      <div className="trade-options-summary">
+        <div className="trade-in-card-img">
+          <img
+            src={`/images/model-images/${device.model
+              .toLowerCase()
+              .replaceAll(" ", "-")}.jpg`}
+            alt={device.model}
+          ></img>
+        </div>
+        <div className="trade-in-card-summary">
+          <h3>{device.model}</h3>
+          <p>{`Variant: ${device.storage}`}</p>
+          <p>{`Condition: ${device.condition}`}</p>
+          <p>{`Value: ${device.worth} ksh`}</p>
+        </div>
+      </div>
+      
     </div>
   );
 }
