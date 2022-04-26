@@ -10,6 +10,7 @@ import FormLabel from "@mui/material/FormLabel";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import CartItems from "./CartItems";
 
 function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //States
@@ -146,7 +147,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   return (
     <div className="section-5">
       <div className="step-title">
-        <h1>Checkout:</h1>
+        <h1>Checkout</h1>
       </div>
       <div className="container contact-container">
         <div className="contact-form-container">
@@ -261,29 +262,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
               />
             </LocalizationProvider>
           ) : null}
-          <div className="section-nav section-5-nav">
-            <button
-              onClick={() => handler(devices, step - 1)}
-              className="btn nav-btn"
-            >
-              Previous: Trade-In Options
-            </button>
-            {ready ? (
-              <button
-                onClick={() => submitHandler()}
-                className="btn nav-btn nav-btn-next"
-              >
-                Submit
-              </button>
-            ) : (
-              <button disabled className="btn nav-btn ">
-                Submit
-              </button>
-            )}
-          </div>
         </div>
         <div className="checkout-summary">
-          <div className="checkout-devices"></div>
+          <div className="checkout-devices">
+            {devices.map((device) => (
+              <CartItems device={device} />
+            ))}
+          </div>
           <div className="add-another-device">
             <Button
               variant="contained"
@@ -294,6 +279,26 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             </Button>
           </div>
         </div>
+      </div>
+      <div className="section-nav section-5-nav">
+        <button
+          onClick={() => handler(devices, step - 1)}
+          className="btn nav-btn"
+        >
+          Previous: Trade-In Options
+        </button>
+        {ready ? (
+          <button
+            onClick={() => submitHandler()}
+            className="btn nav-btn nav-btn-next"
+          >
+            Submit
+          </button>
+        ) : (
+          <button disabled className="btn nav-btn ">
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );

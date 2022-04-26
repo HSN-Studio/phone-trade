@@ -84,7 +84,8 @@ label {
   margin: 0.5rem 0;
 }
 .brand-card,
-.model-card {
+.model-card,
+.cart-item-card {
   background-color: white;
   border-radius: 1em;
   display: flex;
@@ -100,7 +101,8 @@ label {
 }
 
 .model-card > img,
-.trade-in-card > img {
+.trade-in-card > img,
+.cart-item-img > img {
   max-width: 170px;
   height: auto;
 }
@@ -113,7 +115,8 @@ label {
 .trade-in-card-summary * {
   margin: 0.5rem;
 }
-.trade-options-form {
+.trade-options-form,
+.specifications {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,7 +162,9 @@ label {
   display: flex;
   align-items: center;
 }
-
+.specifications {
+  padding: 2rem 0 3rem 0;
+}
 .specifications,
 .summary {
   display: flex;
@@ -206,4 +211,31 @@ label {
 
 #mui-8-helper-text {
   color: red !important;
+}
+
+.contact-form-container {
+  width: 70%;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.checkout-summary {
+  width: 30%;
+}
+.contact-form-container > div {
+  margin: 1rem 0;
+}
+.contact-container {
+  display: flex;
+  gap: 2rem;
+}
+.cart-item-card {
+  margin: 1rem 0;
+}
+
+.add-another-device {
+  display: flex;
+  justify-content: center;
 }
