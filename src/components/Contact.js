@@ -14,6 +14,7 @@ import CartItems from "./CartItems";
 
 function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //States
+  let userBalanceTemp;
   const cities = [
     "Arboretum",
     "Cbd",
@@ -45,7 +46,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     mobileNumber: "",
     address: "",
     city: "",
-    deviceCollection: "Walk-In",
+    deviceCollection: "",
     time: "",
   });
   const [nameError, setnameError] = useState(false);
@@ -54,11 +55,16 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [addressError, setaddressError] = useState(false);
   const [cityError, setcityError] = useState(false);
   const [timeError, settimeError] = useState(false);
+  const [deviceCollectionError, setdeviceCollectionError] = useState(false);
+  const [userBalance, setUserBalance] = useState(0);
 
   useEffect(() => {
     console.log(contactInfo, devices);
-    balanceCalculator();
+    // balanceCalculator();
   }, [contactInfo]);
+  useEffect(() => {
+    balanceCalculator();
+  }, [userBalanceTemp]);
 
   //Handler Functions
   const inputHandler = (event) => {
@@ -114,8 +120,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     validation === true ? setcityError(false) : setcityError(true);
     return validation === true ? true : false;
   };
+  const pickupValidator = () => {
+    contactInfo.deviceCollection !== ""
+      ? setdeviceCollectionError(false)
+      : setdeviceCollectionError(true);
+    return contactInfo.deviceCollection !== "" ? true : false;
+  };
   const timeValidator = () => {
-    if (contactInfo.time === "G4S Mail In") return true;
     contactInfo.time !== "" ? settimeError(false) : settimeError(true);
     return contactInfo.time !== "" ? true : false;
   };
@@ -126,16 +137,18 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       mobileNoValidator() === true &&
       addressValidator() === true &&
       cityValidator() === true &&
+      pickupValidator() === true &&
       timeValidator() === true
     )
       console.log("true");
   };
   const balanceCalculator = () => {
-    let balance;
-    devices.map((device) => {
+    devices.forEach((device) => {
+      console.log(userBalance);
+      userBalanceTemp = userBalance;
       device.tradeDifference !== ""
-        ? console.log(device.tradeDifference)
-        : console.log(device.worth);
+        ? setUserBalance((userBalanceTemp += device.tradeDifference))
+        : setUserBalance((userBalanceTemp += device.worth));
     });
   };
   const submitHandler = () => {
@@ -210,10 +223,11 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             onChange={inputHandler}
             onBlur={cityValidator}
           />
-          <FormControl fullWidth>
+          <FormControl fullWidth error={deviceCollectionError === true}>
             <FormLabel id="device-pickup-method-label">
               Device(s) Collection:
             </FormLabel>
+
             <RadioGroup
               row
               aria-labelledby="device-collection-options"
@@ -271,9 +285,14 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             <h2>Your Trade Ins</h2>
           </div>
           <div className="checkout-devices">
-            {devices.map((device) => (
-              <CartItems device={device} />
+            {devices.map((device, i) => (
+              <CartItems device={device} key={i} />
             ))}
+          </div>
+          <div className="user-balance">
+            {userBalance !== 0 ? (
+              <h3 className="accent-text">Balance: {userBalance} KSH </h3>
+            ) : null}
           </div>
           <div className="add-another-device">
             <Button
