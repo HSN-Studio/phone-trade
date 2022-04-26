@@ -59,17 +59,16 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [deviceCollectionError, setdeviceCollectionError] = useState(false);
   const [userBalance, setUserBalance] = useState(0);
 
-  useEffect(() => {
-    console.log(contactInfo, devices);
-    // balanceCalculator();
-  }, [contactInfo]);
+  // useEffect(() => {
+  //   console.log(contactInfo, devices);
+  //   // balanceCalculator();
+  // }, [contactInfo]);
   // useEffect(() => {
   //   balanceCalculator();
   // }, [userBalanceTemp]);
 
   //Handler Functions
   const inputHandler = (event) => {
-    console.log(event);
     let contactInfotemp = { ...contactInfo };
 
     if (event.target.name === "mobileNumber") {
@@ -88,12 +87,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     let contactInfotemp = { ...contactInfo };
     contactInfotemp.city = cityName;
     setcontactInfo(contactInfotemp);
+    setCity(cityName);
   };
   const dateTimeHandler = (dateTime) => {
     let contactInfotemp = { ...contactInfo };
     contactInfotemp.time = dateTime;
     setcontactInfo(contactInfotemp);
-    console.log(contactInfotemp);
   };
   const nameValidator = () => {
     let validation =
@@ -148,7 +147,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       pickupValidator() === true &&
       timeValidator() === true
     )
-      console.log("true");
+      window.alert("SMS Api Not working!");
+    console.table(devices);
+    console.table(contactInfo);
   };
   const balanceCalculator = () => {
     devices.forEach((device) => {
@@ -221,7 +222,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             onChange={inputHandler}
             onBlur={addressValidator}
           />
-          <TextField
+          {/* <TextField
             required
             name="city"
             label="City"
@@ -230,7 +231,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             type="text"
             onChange={inputHandler}
             onBlur={cityValidator}
-          />
+          /> */}
           {/* /* City */}
           <Autocomplete
             disablePortal
@@ -245,7 +246,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             renderInput={(params) => <TextField {...params} label=" City" />}
           />
           {contactInfo.city !== "" ? (
-            <FormControl fullWidth error={deviceCollectionError === true}>
+            <FormControl fullWidth>
               <FormLabel id="device-pickup-method-label">
                 Device(s) Collection:
               </FormLabel>
@@ -261,13 +262,14 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                   value="Walk-In"
                   control={<Radio />}
                   label="Book a Walk-in appointment"
-                  disabled
                 />
-                <FormControlLabel
-                  value="Pickup"
-                  control={<Radio />}
-                  label="Request for Pick up (Outside Nairobi/Mombasa)"
-                />
+                {contactInfo.city !== "Other" ? (
+                  <FormControlLabel
+                    value="Pickup"
+                    control={<Radio />}
+                    label="Request for Pick up (Outside Nairobi/Mombasa)"
+                  />
+                ) : null}
                 <FormControlLabel
                   value="G4S Mail In"
                   control={<Radio />}

@@ -248,6 +248,7 @@ label {
 .add-another-device {
   display: flex;
   justify-content: center;
+  margin: 2rem 0;
 }
 .contact-form-tite {
   margin: 0 !important;
