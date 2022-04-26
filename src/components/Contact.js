@@ -84,6 +84,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     }
   };
   const cityHandler = (cityName) => {
+    if (cityName === null) return;
     let contactInfotemp = { ...contactInfo };
     contactInfotemp.city = cityName;
     setcontactInfo(contactInfotemp);
@@ -235,15 +236,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             disablePortal
             id="cities-list-combo-box"
             name="city"
-            error={cityError === true}
-            helperText={cityError ? "Invalid Input (only use letters A-Z)" : ""}
             options={cities}
             fullWidth
             value={city}
             onChange={(e, value) => {
               cityHandler(value);
             }}
-            onBlur={cityValidator}
             renderInput={(params) => <TextField {...params} label=" City" />}
           />
           {contactInfo.city !== "" ? (
