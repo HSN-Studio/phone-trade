@@ -47,6 +47,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     mobileNumber: "",
     address: "",
     city: "Arboretum",
+    otherCity: "",
     deviceCollection: "",
     time: "",
   });
@@ -77,6 +78,10 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
         contactInfotemp.mobileNumber = event.target.value;
         setcontactInfo(contactInfotemp);
       }
+    }
+    if (event.target.name === "city") {
+      contactInfotemp.otherCity = event.target.value;
+      setcontactInfo(contactInfotemp);
     } else {
       contactInfotemp[event.target.name] = event.target.value;
       setcontactInfo(contactInfotemp);
@@ -123,7 +128,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
 
   const cityValidator = () => {
     let validation =
-      /^[a-zA-Z\s]*$/.test(contactInfo.city) && contactInfo.city !== null;
+      /^[a-zA-Z\s]*$/.test(contactInfo.city) && contactInfo.city !== "Other";
     validation === true ? setcityError(false) : setcityError(true);
     return validation === true ? true : false;
   };
@@ -248,6 +253,18 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             }}
             renderInput={(params) => <TextField {...params} label=" City" />}
           />
+          {contactInfo.city === "Other" ? (
+            <TextField
+              required
+              name="city"
+              label="City"
+              error={cityError === true}
+              helperText={cityError ? "Invalid Name(only use letters A-Z)" : ""}
+              type="text"
+              onChange={inputHandler}
+              onBlur={cityValidator}
+            />
+          ) : null}
           {contactInfo.city !== "" ? (
             <FormControl fullWidth>
               <FormLabel id="device-pickup-method-label">
