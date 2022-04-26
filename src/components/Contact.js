@@ -128,7 +128,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     return validation === true ? true : false;
   };
   const pickupValidator = () => {
-    contactInfo.deviceCollection !== ""
+    contactInfo.deviceCollection
       ? setdeviceCollectionError(false)
       : setdeviceCollectionError(true);
     return contactInfo.deviceCollection !== "" ? true : false;
@@ -147,7 +147,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       pickupValidator() === true &&
       timeValidator() === true
     )
-      window.alert("SMS Api Not working!");
+      window.alert(
+        "Sucess, Info retrieved by server! info: SMS Api Not working!"
+      );
     console.table(devices);
     console.table(contactInfo);
   };
@@ -234,6 +236,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           /> */}
           {/* /* City */}
           <Autocomplete
+            error
             disablePortal
             id="cities-list-combo-box"
             name="city"

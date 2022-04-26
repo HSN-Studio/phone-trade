@@ -54,7 +54,6 @@ function App() {
   };
 
   const modelHandler = (modelName, step) => {
-    console.log(userDevices);
     let currentDevices = [...userDevices];
     let currentDevice = currentDevices[deviceNumber];
     currentDevice.model = modelName;
