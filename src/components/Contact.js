@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
@@ -39,13 +40,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     "Westland",
     "Other",
   ];
-  const [ready, setReady] = useState(true);
+  const [city, setCity] = useState("Arboretum");
   const [contactInfo, setcontactInfo] = useState({
     name: "",
     email: "",
     mobileNumber: "",
     address: "",
-    city: "",
+    city: "Arboretum",
     deviceCollection: "",
     time: "",
   });
@@ -62,12 +63,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     console.log(contactInfo, devices);
     // balanceCalculator();
   }, [contactInfo]);
-  useEffect(() => {
-    balanceCalculator();
-  }, [userBalanceTemp]);
+  // useEffect(() => {
+  //   balanceCalculator();
+  // }, [userBalanceTemp]);
 
   //Handler Functions
   const inputHandler = (event) => {
+    console.log(event);
     let contactInfotemp = { ...contactInfo };
 
     if (event.target.name === "mobileNumber") {
@@ -80,6 +82,11 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       contactInfotemp[event.target.name] = event.target.value;
       setcontactInfo(contactInfotemp);
     }
+  };
+  const cityHandler = (cityName) => {
+    let contactInfotemp = { ...contactInfo };
+    contactInfotemp.city = cityName;
+    setcontactInfo(contactInfotemp);
   };
   const dateTimeHandler = (dateTime) => {
     let contactInfotemp = { ...contactInfo };
@@ -116,7 +123,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
 
   const cityValidator = () => {
     let validation =
-      /^[a-zA-Z\s]*$/.test(contactInfo.city) && contactInfo.city !== "";
+      /^[a-zA-Z\s]*$/.test(contactInfo.city) && contactInfo.city !== null;
     validation === true ? setcityError(false) : setcityError(true);
     return validation === true ? true : false;
   };
@@ -153,7 +160,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   };
   const submitHandler = () => {
     inputsValidator();
-    balanceCalculator();
+    // balanceCalculator();
   };
 
   // JSX
@@ -223,35 +230,54 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             onChange={inputHandler}
             onBlur={cityValidator}
           />
-          <FormControl fullWidth error={deviceCollectionError === true}>
-            <FormLabel id="device-pickup-method-label">
-              Device(s) Collection:
-            </FormLabel>
+          {/* /* City */}
+          <Autocomplete
+            disablePortal
+            id="cities-list-combo-box"
+            name="city"
+            error={cityError === true}
+            helperText={cityError ? "Invalid Input (only use letters A-Z)" : ""}
+            options={cities}
+            fullWidth
+            value={city}
+            onChange={(e, value) => {
+              cityHandler(value);
+            }}
+            onBlur={cityValidator}
+            renderInput={(params) => <TextField {...params} label=" City" />}
+          />
+          {contactInfo.city !== "" ? (
+            <FormControl fullWidth error={deviceCollectionError === true}>
+              <FormLabel id="device-pickup-method-label">
+                Device(s) Collection:
+              </FormLabel>
 
-            <RadioGroup
-              row
-              aria-labelledby="device-collection-options"
-              name="deviceCollection"
-              value={contactInfo.deviceCollection}
-              onChange={inputHandler}
-            >
-              <FormControlLabel
-                value="Walk-In"
-                control={<Radio />}
-                label="Book a Walk-in appointment"
-              />
-              <FormControlLabel
-                value="Pickup"
-                control={<Radio />}
-                label="Request for Pick up (Outside Nairobi/Mombasa)"
-              />
-              <FormControlLabel
-                value="G4S Mail In"
-                control={<Radio />}
-                label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru)"
-              />
-            </RadioGroup>
-          </FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="device-collection-options"
+                name="deviceCollection"
+                value={contactInfo.deviceCollection}
+                onChange={inputHandler}
+              >
+                <FormControlLabel
+                  value="Walk-In"
+                  control={<Radio />}
+                  label="Book a Walk-in appointment"
+                  disabled
+                />
+                <FormControlLabel
+                  value="Pickup"
+                  control={<Radio />}
+                  label="Request for Pick up (Outside Nairobi/Mombasa)"
+                />
+                <FormControlLabel
+                  value="G4S Mail In"
+                  control={<Radio />}
+                  label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru)"
+                />
+              </RadioGroup>
+            </FormControl>
+          ) : null}
           {contactInfo.deviceCollection === "Walk-In" ||
           contactInfo.deviceCollection === "Pickup" ? (
             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -312,7 +338,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
         >
           Previous: Trade-In Options
         </button>
-        {ready ? (
+        {city ? (
           <button
             onClick={() => submitHandler()}
             className="btn nav-btn nav-btn-next"
