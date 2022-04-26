@@ -11,11 +11,20 @@ function CartItems({ device }) {
           alt={device.model}
         ></img>
       </div>
-      <div className="trade-in-card-summary">
-        <h2>{device.model}</h2>
+      <div className="cart-item-summary">
+        <h3>{device.model}</h3>
         <p>{`Variant: ${device.storage}`}</p>
         <p>{`Condition: ${device.condition}`}</p>
-        <p>{`Value: KSH ${device.worth} `}</p>
+        <p className="">
+          {device.tradeMethod === "Cash"
+            ? `Trade In Amount: KSH ${device.worth} `
+            : `Trade Device: ${device.tradeDevice}`}
+        </p>
+        <h4 className="accent-text">
+          {device.tradeMethod === "Device"
+            ? `Difference: ${device.tradeDifference}`
+            : null}
+        </h4>
       </div>
     </div>
   );

@@ -151,6 +151,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       </div>
       <div className="container contact-container">
         <div className="contact-form-container">
+          <div className="contact-form-tite">
+            <h2>Contact Details</h2>
+          </div>
           <TextField
             required
             error={nameError === true}
@@ -264,6 +267,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           ) : null}
         </div>
         <div className="checkout-summary">
+          <div>
+            <h2>Your Trade Ins</h2>
+          </div>
           <div className="checkout-devices">
             {devices.map((device) => (
               <CartItems device={device} />
