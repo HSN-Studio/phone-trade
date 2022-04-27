@@ -279,18 +279,21 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                 onChange={inputHandler}
               >
                 <FormControlLabel
+                  className="device-collection-method-label"
                   value="Walk-In"
                   control={<Radio />}
                   label="Book a Walk-in appointment"
                 />
                 {contactInfo.city !== "Other" ? (
                   <FormControlLabel
+                    className="device-collection-method-label"
                     value="Pickup"
                     control={<Radio />}
                     label="Request for Pick up (Outside Nairobi/Mombasa)"
                   />
                 ) : null}
                 <FormControlLabel
+                  className="device-collection-method-label"
                   value="G4S Mail In"
                   control={<Radio />}
                   label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru)"

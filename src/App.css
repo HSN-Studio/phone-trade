@@ -257,6 +257,9 @@ label {
 
 /* Mobile CSS */
 @media only screen and (max-width: 767px) {
+  .step-title > h1 {
+    font-size: calc(6vw + 9.31549px);
+  }
   .App {
     padding: 2rem;
   }
@@ -296,5 +299,8 @@ label {
   }
   .contact-form-container {
     padding: 2rem 1rem;
+  }
+  .device-collection-method-label {
+    margin-top: 1rem;
   }
 }
