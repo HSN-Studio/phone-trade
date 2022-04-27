@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 function Brandcard({ title, handler }) {
   return (
@@ -14,7 +15,11 @@ function Brandcard({ title, handler }) {
       </div>
       <div className="brand-logo">
         {title === "Other" ? (
-          <h2>OTHER DEVICE</h2>
+          <a target="_blank" href="https://phonetradein.co.ke/contact-us/">
+            <h2>
+              OTHER DEVICE <ArrowCircleRightIcon />
+            </h2>
+          </a>
         ) : (
           <img src={`/images/brand-logos/${title}-logo.png`} alt={title}></img>
         )}

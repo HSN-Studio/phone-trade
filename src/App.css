@@ -13,7 +13,6 @@
 }
 h2 {
   font-weight: 800;
-  text-align: center;
 }
 p,
 label {
@@ -43,6 +42,13 @@ label {
 .brand-logo img {
   max-width: 200px;
   height: auto;
+}
+.brand-logo > a {
+  text-decoration: none;
+  color: #1976d2;
+}
+.brand-logo > a :hover {
+  color: #1976d2;
 }
 .models-container {
   justify-content: space-around;
@@ -217,7 +223,7 @@ label {
   box-shadow: none;
 }
 
-#mui-8-helper-text {
+#mui-7-helper-text {
   color: red !important;
 }
 
@@ -263,6 +269,10 @@ label {
   .App {
     padding: 2rem;
   }
+  h2 {
+    text-align: center;
+  }
+
   /* Section 3 */
   .device-details-container {
     flex-direction: column-reverse;

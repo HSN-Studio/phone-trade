@@ -127,8 +127,10 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   };
 
   const cityValidator = () => {
+    if (contactInfo.city !== "Other") return true;
     let validation =
-      /^[a-zA-Z\s]*$/.test(contactInfo.city) && contactInfo.city !== "Other";
+      /^[a-zA-Z\s]*$/.test(contactInfo.cityOther) &&
+      contactInfo.otherCity !== "";
     validation === true ? setcityError(false) : setcityError(true);
     return validation === true ? true : false;
   };
