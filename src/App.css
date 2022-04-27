@@ -13,6 +13,7 @@
 }
 h2 {
   font-weight: 800;
+  text-align: center;
 }
 p,
 label {
@@ -40,8 +41,8 @@ label {
   justify-content: center;
 }
 .brand-logo img {
-  max-height: 90px;
-  width: auto;
+  max-width: 200px;
+  height: auto;
 }
 .models-container {
   justify-content: space-around;
@@ -112,7 +113,7 @@ label {
 .trade-options-form,
 .trade-options-summary {
   width: 50%;
-  padding: 0 2rem;
+  padding: 2rem;
 }
 .cart-item-summary * {
   margin: 0.5rem;
@@ -252,4 +253,48 @@ label {
 }
 .contact-form-tite {
   margin: 0 !important;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 767px) {
+  .App {
+    padding: 2rem;
+  }
+  /* Section 3 */
+  .device-details-container {
+    flex-direction: column-reverse;
+  }
+  .summary {
+    width: 100%;
+  }
+  .specifications {
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+  }
+  /* Section 4 */
+  .trade-options-container {
+    flex-direction: column-reverse;
+  }
+  .trade-options-form,
+  .trade-options-summary {
+    width: 100%;
+  }
+  /* Section 5 */
+  .contact-container {
+    flex-direction: column-reverse;
+  }
+  .checkout-summary,
+  .contact-form-container {
+    width: 100%;
+  }
+  .cart-item-summary {
+    text-align: center;
+  }
+  .cart-item-card {
+    flex-direction: column;
+  }
+  .contact-form-container {
+    padding: 2rem 1rem;
+  }
 }
