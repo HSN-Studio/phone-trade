@@ -49,6 +49,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     city: "Arboretum",
     otherCity: "",
     deviceCollection: "Walk-In",
+    deviceCollectionCost: "",
     time: "",
   });
   const [nameError, setnameError] = useState(false);
@@ -83,9 +84,19 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       contactInfotemp.otherCity = event.target.value;
       setcontactInfo(contactInfotemp);
     } else {
-      contactInfotemp[event.target.name] = event.target.value;
       setcontactInfo(contactInfotemp);
     }
+  };
+
+  const methodHandler = (e, method) => {
+    console.log(e, method);
+    let contactInfotemp = { ...contactInfo };
+    contactInfotemp.deviceCollection = method;
+    contactInfotemp.deviceCollectionCost = e.target.dataset.cost;
+    // method === "Walk-In"
+    //   ? null
+    //   : (contactInfotemp.deviceCollectionCost = "300");
+    setcontactInfo(contactInfotemp);
   };
   const cityHandler = (cityName) => {
     if (cityName === null) return;
@@ -260,7 +271,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
               name="city"
               label="City"
               error={cityError === true}
-              helperText={cityError ? "Invalid City Name(only use letters A-Z)" : ""}
+              helperText={
+                cityError ? "Invalid City Name(only use letters A-Z)" : ""
+              }
               type="text"
               onChange={inputHandler}
               onBlur={cityValidator}
@@ -277,11 +290,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                 aria-labelledby="device-collection-options"
                 name="deviceCollection"
                 value={contactInfo.deviceCollection}
-                onChange={inputHandler}
+                onChange={(e, value) => methodHandler(e, value)}
               >
                 <FormControlLabel
                   className="device-collection-method-label"
                   value="Walk-In"
+                  inputProps={{ "data-cost": "" }}
                   control={<Radio />}
                   label="Book a Walk-in appointment"
                 />
@@ -289,15 +303,17 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                   <FormControlLabel
                     className="device-collection-method-label"
                     value="Pickup"
+                    inputProps={{ "data-cost": "300" }}
                     control={<Radio />}
-                    label="Request for Pick up (Outside Nairobi/Mombasa)"
+                    label="Request for Pick up (Outside Nairobi/Mombasa +KSH300)"
                   />
                 ) : null}
                 <FormControlLabel
                   className="device-collection-method-label"
                   value="G4S Mail In"
+                  inputProps={{ "data-cost": "300" }}
                   control={<Radio />}
-                  label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru)"
+                  label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru +KSH 300)"
                 />
               </RadioGroup>
             </FormControl>
@@ -342,6 +358,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           <div className="user-balance">
             {userBalance !== 0 ? (
               <h3 className="accent-text">Balance: {userBalance} KSH </h3>
+            ) : null}
+          </div>
+          <div className="user-balance">
+            {contactInfo.deviceCollectionCost !== "" ? (
+              <h3 className="accent-text">
+                Pickup Cost: {contactInfo.deviceCollectionCost} KSH{" "}
+              </h3>
             ) : null}
           </div>
           <div className="add-another-device">
