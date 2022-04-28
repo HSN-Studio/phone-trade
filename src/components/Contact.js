@@ -69,7 +69,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //   // balanceCalculator();
   // }, [contactInfo]);
   useEffect(() => {
-    msgGenerator;
+    msgGenerator();
   }, []);
   useEffect(() => {
     console.log(msg);
@@ -197,7 +197,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     devices.forEach((device) => {
       let tempMsg = msg;
       if (device.tradeMethod === "Cash") {
-        tempMsg = `${tempMsg} + ${device.model} for KSH ${device.worth}.`;
+        tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
         setMsg(tempMsg);
       } else
         msg =
