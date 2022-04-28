@@ -60,19 +60,25 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [timeError, settimeError] = useState(false);
   const [deviceCollectionError, setdeviceCollectionError] = useState(false);
   const [userBalance, setUserBalance] = useState(0);
+  const [msg, setMsg] = useState(
+    "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
+  );
 
   // useEffect(() => {
   //   console.log(contactInfo, devices);
   //   // balanceCalculator();
   // }, [contactInfo]);
-  // useEffect(() => {
-  //   balanceCalculator();
-  // }, [userBalanceTemp]);
+  useEffect(() => {
+    msgGenerator;
+  }, []);
+  useEffect(() => {
+    console.log(msg);
+  }, [msg]);
 
   //Handler Functions
   const inputHandler = (event) => {
     let contactInfotemp = { ...contactInfo };
-
+    contactInfotemp[event.target.name] = event.target.value;
     if (event.target.name === "mobileNumber") {
       const regex = /^[0-9\b]+$/;
       if (event.target.value === "" || regex.test(event.target.value)) {
@@ -91,12 +97,15 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const methodHandler = (e, method) => {
     console.log(e, method);
     let contactInfotemp = { ...contactInfo };
-    contactInfotemp.deviceCollection = method;
-    contactInfotemp.deviceCollectionCost = e.target.dataset.cost;
-    // method === "Walk-In"
-    //   ? null
-    //   : (contactInfotemp.deviceCollectionCost = "300");
-    setcontactInfo(contactInfotemp);
+    if (method === "Walk-In") {
+      contactInfotemp.deviceCollection = method;
+      contactInfotemp.deviceCollectionCost = "";
+      setcontactInfo(contactInfotemp);
+    } else {
+      contactInfotemp.deviceCollection = method;
+      contactInfotemp.deviceCollectionCost = "300";
+      setcontactInfo(contactInfotemp);
+    }
   };
   const cityHandler = (cityName) => {
     if (cityName === null) return;
@@ -165,11 +174,8 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       pickupValidator() === true &&
       timeValidator() === true
     )
-      window.alert(
-        "Sucess, Info retrieved by server! info: SMS Api Not working!"
-      );
-    console.table(devices);
-    console.table(contactInfo);
+      return true;
+    else return false;
   };
   const balanceCalculator = () => {
     devices.forEach((device) => {
@@ -182,9 +188,23 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   };
   const submitHandler = () => {
     inputsValidator();
+
     // balanceCalculator();
   };
-
+  const htmlGenerator = () => {};
+  const msgGenerator = () => {
+    let msg = "Thank you for using PhoneTrade.co.ke, Your Trade In Offers: ";
+    devices.forEach((device) => {
+      let tempMsg = msg;
+      if (device.tradeMethod === "Cash") {
+        tempMsg = `${tempMsg} + ${device.model} for KSH ${device.worth}.`;
+        setMsg(tempMsg);
+      } else
+        msg =
+          msg +
+          `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
+    });
+  };
   // JSX
   return (
     <div className="section-5">
@@ -295,7 +315,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                 <FormControlLabel
                   className="device-collection-method-label"
                   value="Walk-In"
-                  inputProps={{ "data-cost": "" }}
                   control={<Radio />}
                   label="Book a Walk-in appointment"
                 />
@@ -303,7 +322,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                   <FormControlLabel
                     className="device-collection-method-label"
                     value="Pickup"
-                    inputProps={{ "data-cost": "300" }}
                     control={<Radio />}
                     label="Request for Pick up (Outside Nairobi/Mombasa +KSH300)"
                   />
@@ -311,7 +329,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                 <FormControlLabel
                   className="device-collection-method-label"
                   value="G4S Mail In"
-                  inputProps={{ "data-cost": "300" }}
                   control={<Radio />}
                   label="G4S Mail In (Outside Nairobi/Mombasa/Nakuru +KSH 300)"
                 />
@@ -398,6 +415,16 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           </button>
         )}
       </div>
+
+      {/* <div>
+        <div className="header"></div>
+        <div className="TradeIntable"></div>
+        <div className="contact-info">
+          <h2>Contact Details:</h2>
+          <h4>Name: {contactInfo.name}</h4>
+        </div>
+        <div className="footer"></div>
+      </div> */}
     </div>
   );
 }
