@@ -48,7 +48,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     address: "",
     city: "Arboretum",
     otherCity: "",
-    deviceCollection: "",
+    deviceCollection: "Walk-In",
     time: "",
   });
   const [nameError, setnameError] = useState(false);
@@ -129,7 +129,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const cityValidator = () => {
     if (contactInfo.city !== "Other") return true;
     let validation =
-      /^[a-zA-Z\s]*$/.test(contactInfo.cityOther) &&
+      /^[a-zA-Z\s]*$/.test(contactInfo.otherCity) &&
       contactInfo.otherCity !== "";
     validation === true ? setcityError(false) : setcityError(true);
     return validation === true ? true : false;
@@ -243,7 +243,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           /> */}
           {/* /* City */}
           <Autocomplete
-            error
             disablePortal
             id="cities-list-combo-box"
             name="city"
@@ -261,7 +260,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
               name="city"
               label="City"
               error={cityError === true}
-              helperText={cityError ? "Invalid Name(only use letters A-Z)" : ""}
+              helperText={cityError ? "Invalid City Name(only use letters A-Z)" : ""}
               type="text"
               onChange={inputHandler}
               onBlur={cityValidator}
