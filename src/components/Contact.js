@@ -64,6 +64,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
   );
   const [html, setHtml] = useState("");
+  let emailTemplate = "template only";
 
   // useEffect(() => {
   //   console.log(contactInfo, devices);
@@ -73,9 +74,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //   msgGenerator();
   // }, []);
   useEffect(() => {
-    console.log(html);
-    console.table(devices);
-  }, [html]);
+    console.log(emailTemplate);
+    // console.table(devices);
+  }, [emailTemplate]);
 
   //Handler Functions
   const inputHandler = (event) => {
@@ -265,14 +266,13 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       <h3>Collection/Pickup Time: ${contactInfo.time}</h3>
   
       `;
-    setHtml(
+    emailTemplate =
       table +
-        tableData.join(" ") +
-        `</table>` +
-        contactDetails +
-        `</body>
-          </html>`
-    );
+      tableData.join(" ") +
+      `</table>` +
+      contactDetails +
+      `</body>
+          </html>`;
   };
 
   const msgGenerator = async () => {
@@ -299,7 +299,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       method: "POST",
       body: JSON.stringify({
         to: contactInfo.email,
-        html: html,
+        html: emailTemplate,
       }),
       headers: { "Content-type": "application/json" },
     })
