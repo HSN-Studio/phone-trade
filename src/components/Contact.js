@@ -165,7 +165,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     return contactInfo.deviceCollection !== "" ? true : false;
   };
   const timeValidator = () => {
-    contactInfo.time !== "" ? settimeError(false) : settimeError(true);
+    contactInfo.time ? settimeError(false) : settimeError(true);
     return contactInfo.time !== "" ? true : false;
   };
   const inputsValidator = () => {
@@ -389,7 +389,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           {contactInfo.city === "Other" ? (
             <TextField
               required
-              name="city"
+              name="otherCity"
               label="City"
               error={cityError === true}
               helperText={
@@ -454,10 +454,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                   />
                 )}
                 name="time"
+                value={contactInfo.time}
                 label="Select Date & Time"
                 minDateTime={new Date()}
                 onChange={(newDateTime) => {
                   dateTimeHandler(newDateTime);
+                  console.log(newDateTime);
                 }}
                 onBlur={timeValidator}
               />
