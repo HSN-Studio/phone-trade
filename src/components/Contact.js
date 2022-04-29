@@ -68,9 +68,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //   console.log(contactInfo, devices);
   //   // balanceCalculator();
   // }, [contactInfo]);
-  useEffect(() => {
-    msgGenerator();
-  }, []);
+  // useEffect(() => {
+  //   msgGenerator();
+  // }, []);
   useEffect(() => {
     console.log(msg);
   }, [msg]);
@@ -165,6 +165,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     return contactInfo.time !== "" ? true : false;
   };
   const inputsValidator = () => {
+    console.log("input validator function executed");
     if (
       nameValidator() === true &&
       emailValidator() === true &&
@@ -187,23 +188,28 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     });
   };
   const submitHandler = () => {
-    inputsValidator();
+    if (inputsValidator() === "true") msgGenerator();
 
     // balanceCalculator();
   };
   const htmlGenerator = () => {};
-  const msgGenerator = () => {
-    let msg = "Thank you for using PhoneTrade.co.ke, Your Trade In Offers: ";
-    devices.forEach((device) => {
-      let tempMsg = msg;
+  const msgGenerator = async () => {
+    let msg = "Trade In Offer(s): ";
+    let messages = await devices.map((device) => {
       if (device.tradeMethod === "Cash") {
-        tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
-        setMsg(tempMsg);
+        return `${device.model} for KSH ${device.worth}`;
       } else
-        msg =
-          msg +
-          `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
+        return `${device.model} with ${device.tradeDevice} for KSH ${device.tradeDifference}`;
+      // let tempMsg = msg;
+      // if (device.tradeMethod === "Cash") {
+      //   tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
+      //   setMsg(tempMsg);
+      // } else
+      //   msg =
+      //     msg +
+      //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
     });
+    setMsg(msg + messages.join(" "));
   };
   // JSX
   return (
