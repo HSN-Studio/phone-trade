@@ -188,7 +188,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     });
   };
   const submitHandler = () => {
-    if (inputsValidator() === "true") msgGenerator();
+    if (inputsValidator() === true) msgGenerator();
 
     // balanceCalculator();
   };
@@ -197,9 +197,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     let msg = "Trade In Offer(s): ";
     let messages = await devices.map((device) => {
       if (device.tradeMethod === "Cash") {
-        return `${device.model} for KSH ${device.worth}`;
+        return `"${device.model} for KSH ${device.worth}"`;
       } else
-        return `${device.model} with ${device.tradeDevice} for KSH ${device.tradeDifference}`;
+        return `"${device.model} with ${device.tradeDevice} for KSH ${device.tradeDifference}"`;
       // let tempMsg = msg;
       // if (device.tradeMethod === "Cash") {
       //   tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
@@ -210,6 +210,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
     });
     setMsg(msg + messages.join(" "));
+    // console.log(msg + messages.join(" "));
   };
   // JSX
   return (
