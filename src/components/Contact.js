@@ -60,11 +60,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [timeError, settimeError] = useState(false);
   const [deviceCollectionError, setdeviceCollectionError] = useState(false);
   const [userBalance, setUserBalance] = useState(0);
-  const [msg, setMsg] = useState(
-    "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
-  );
+  // const [msg, setMsg] = useState(
+  //   "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
+  // );
   const [html, setHtml] = useState("");
   let emailTemplate = "template only";
+  let msg = "Trade In Offer(s)";
 
   // useEffect(() => {
   //   console.log(contactInfo, devices);
@@ -276,7 +277,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   };
 
   const msgGenerator = async () => {
-    let msg = "Trade In Offer(s): ";
     let messages = await devices.map((device) => {
       if (device.tradeMethod === "Cash") {
         return `"${device.model} for KSH ${device.worth}"`;
@@ -291,7 +291,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       //     msg +
       //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
     });
-    setMsg(msg + messages.join(" "));
+    msg = msg + messages.join(" ");
     // console.log(msg + messages.join(" "));
   };
   const sendEmail = () => {
