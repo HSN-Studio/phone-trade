@@ -63,6 +63,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [msg, setMsg] = useState(
     "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
   );
+  const [html, setHtml] = useState("");
 
   // useEffect(() => {
   //   console.log(contactInfo, devices);
@@ -72,8 +73,9 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //   msgGenerator();
   // }, []);
   useEffect(() => {
-    console.log(msg);
-  }, [msg]);
+    console.log(html);
+    console.table(devices);
+  }, [html]);
 
   //Handler Functions
   const inputHandler = (event) => {
@@ -188,11 +190,64 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     });
   };
   const submitHandler = () => {
-    if (inputsValidator() === true) msgGenerator();
+    if (inputsValidator() === true) {
+      msgGenerator();
+      htmlGenerator();
+    }
 
     // balanceCalculator();
   };
-  const htmlGenerator = () => {};
+  const htmlGenerator = async () => {
+    let table = `<!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: red;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2>HTML Table</h2>
+    <table>
+        <tr>
+          <th>Model</th>
+          <th>Variant</th>
+          <th>Garde</th>
+          <th>Worth</th>
+          <th>Trade Method</th>
+          <th>Trade Device</th>
+          <th>New or Pre-Owned</th>
+          <th>Difference</th>
+        </tr>`;
+    let tableData = await devices.map((device) => {
+      return `<tr>
+      <td>${device.model}</td>
+      <td>${device.storage}</td>
+      <td>${device.condition}</td>
+      <td>${device.worth}</td>
+      <td>${device.tradeMethod}</td>
+      <td>${device.tradeDevice}</td>
+      <td>${device.tradeDeviceCondition}</td>
+      <td>${device.tradeDifference}</td>
+    </tr>`;
+    });
+    setHtml(table + tableData.join(" ") + `</table></body>
+    </html>`);
+  };
   const msgGenerator = async () => {
     let msg = "Trade In Offer(s): ";
     let messages = await devices.map((device) => {
