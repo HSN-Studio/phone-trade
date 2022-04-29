@@ -190,122 +190,114 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     });
   };
 
-  const submitHandler = async () => {
-    if (inputsValidator() === true) {
-      await msgGenerator();
-      await htmlGenerator();
-      sendEmail();
+  // balanceCalculator();
+}
+const htmlGenerator = async () => {
+  let table = `<!DOCTYPE html>
+    <html>
+    <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+  *{
+    font-family: Montserrat;
+  }
+    table {
+      border-collapse: collapse;
+      width: 100%;
     }
-
-    // balanceCalculator();
-  };
-  const htmlGenerator = async () => {
-    let table = `<!DOCTYPE html>
-      <html>
-      <head>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-      />
-      <style>
-    *{
-      font-family: Montserrat;
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
     }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-  
-      td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-  
-      tr:nth-child(even) {
-        background-color: red;
-      }
-      </style>
-      </head>
-      <body>
-      <p>Trade In request received at Phonetrade.co.ke. Please find details below:
-      <h2>Trade In(s):</h2>
-      <table>
-          <tr>
-            <th>Model</th>
-            <th>Variant</th>
-            <th>Garde</th>
-            <th>Worth</th>
-            <th>Trade Method</th>
-            <th>Trade Device</th>
-            <th>New or Pre-Owned</th>
-            <th>Difference</th>
-          </tr>`;
-    let tableData = await devices.map((device) => {
-      return `<tr>
-        <td>${device.model}</td>
-        <td>${device.storage}</td>
-        <td>${device.condition}</td>
-        <td>${device.worth}</td>
-        <td>${device.tradeMethod}</td>
-        <td>${device.tradeDevice}</td>
-        <td>${device.tradeDeviceCondition}</td>
-        <td>${device.tradeDifference}</td>
-      </tr>`;
-    });
-    let contactDetails = `<h2>Contact Details:</h2>
-      Name: ${contactInfo.name}
-      Email: ${contactInfo.email}
-      Mobile Number: ${contactInfo.mobileNumber}
-      Address: ${contactInfo.address}
-      City: ${contactInfo.city}
-      City (Outside Nairobi): ${contactInfo.otherCity}
-      Device Pickup/Collection: ${contactInfo.deviceCollection}
-      Collection Cost: ${contactInfo.deviceCollectionCost}
-      Collection/Pickup Time: ${contactInfo.time}
-  
-      `;
-    setHtml(
-      table +
-        tableData.join(" ") +
-        `</table>` +
-        contactDetails +
-        `</body>
-          </html>`
-    );
-  };
-
-  const msgGenerator = async () => {
-    let msg = "Trade In Offer(s): ";
-    let messages = await devices.map((device) => {
-      if (device.tradeMethod === "Cash") {
-        return `"${device.model} for KSH ${device.worth}"`;
-      } else
-        return `"${device.model} with ${device.tradeDevice} for KSH ${device.tradeDifference}"`;
-      // let tempMsg = msg;
-      // if (device.tradeMethod === "Cash") {
-      //   tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
-      //   setMsg(tempMsg);
-      // } else
-      //   msg =
-      //     msg +
-      //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
-    });
-    setMsg(msg + messages.join(" "));
-    // console.log(msg + messages.join(" "));
-  };
-  const sendEmail = () => {
-    fetch("http://localhost:5000/v1/send-email", {
-      method: "POST",
-      body: JSON.stringify({
-        to: contactInfo.email,
-        html: html,
-      }),
-      headers: { "Content-type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+    
+    tr:nth-child(even) {
+      background-color: red;
+    }
+    </style>
+    </head>
+    <body>
+    <p>Trade In request received at Phonetrade.co.ke. Please find details below:
+    <h2>Trade In(s):</h2>
+    <table>
+        <tr>
+          <th>Model</th>
+          <th>Variant</th>
+          <th>Garde</th>
+          <th>Worth</th>
+          <th>Trade Method</th>
+          <th>Trade Device</th>
+          <th>New or Pre-Owned</th>
+          <th>Difference</th>
+        </tr>`;
+  let tableData = await devices.map((device) => {
+    return `<tr>
+      <td>${device.model}</td>
+      <td>${device.storage}</td>
+      <td>${device.condition}</td>
+      <td>${device.worth}</td>
+      <td>${device.tradeMethod}</td>
+      <td>${device.tradeDevice}</td>
+      <td>${device.tradeDeviceCondition}</td>
+      <td>${device.tradeDifference}</td>
+    </tr>`;
+  });
+  let contactDetails = `<h2>Contact Details:</h2>
+    Name: ${contactInfo.name}
+    Email: ${contactInfo.email}
+    Mobile Number: ${contactInfo.mobileNumber}
+    Address: ${contactInfo.address}
+    City: ${contactInfo.city}
+    City (Outside Nairobi): ${contactInfo.otherCity}
+    Device Pickup/Collection: ${contactInfo.deviceCollection}
+    Collection Cost: ${contactInfo.deviceCollectionCost}
+    Collection/Pickup Time: ${contactInfo.time}
+    
+    `;
+  setHtml(
+    table +
+      tableData.join(" ") +
+      contactDetails +
+      `</table></body>
+        </html>`
+  );
+};
+const msgGenerator = async () => {
+  let msg = "Trade In Offer(s): ";
+  let messages = await devices.map((device) => {
+    if (device.tradeMethod === "Cash") {
+      return `"${device.model} for KSH ${device.worth}"`;
+    } else
+      return `"${device.model} with ${device.tradeDevice} for KSH ${device.tradeDifference}"`;
+    // let tempMsg = msg;
+    // if (device.tradeMethod === "Cash") {
+    //   tempMsg = `${tempMsg}  ${device.model} for KSH ${device.worth}.`;
+    //   setMsg(tempMsg);
+    // } else
+    //   msg =
+    //     msg +
+    //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
+  });
+  setMsg(msg + messages.join(" "));
+  // console.log(msg + messages.join(" "));
+};
+const sendEmail = () => {
+  fetch("http://localhost:5000/v1/send-email", {
+    method: "POST",
+    body: { to: contactInfo.email, html: html },
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+  });
+};
+const submitHandler = async () => {
+  if (inputsValidator() === true) {
+    await msgGenerator();
+    await htmlGenerator();
+    await sendEmail();
+  }
   // JSX
   return (
     <div className="section-5">
@@ -528,6 +520,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       </div> */}
     </div>
   );
-}
+};
 
 export default Contact;
