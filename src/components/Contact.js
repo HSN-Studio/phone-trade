@@ -235,11 +235,11 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             <th>Model</th>
             <th>Variant</th>
             <th>Garde</th>
-            <th>Worth</th>
+            <th>Worth(KSH)</th>
             <th>Trade Method</th>
             <th>Trade Device</th>
             <th>New or Pre-Owned</th>
-            <th>Difference</th>
+            <th>Difference(KSH)</th>
           </tr>`;
     let tableData = await devices.map((device) => {
       return `<tr>
@@ -254,15 +254,15 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       </tr>`;
     });
     let contactDetails = `<h2>Contact Details:</h2>
-      Name: ${contactInfo.name}
-      Email: ${contactInfo.email}
-      Mobile Number: ${contactInfo.mobileNumber}
-      Address: ${contactInfo.address}
-      City: ${contactInfo.city}
-      City (Outside Nairobi): ${contactInfo.otherCity}
-      Device Pickup/Collection: ${contactInfo.deviceCollection}
-      Collection Cost: ${contactInfo.deviceCollectionCost}
-      Collection/Pickup Time: ${contactInfo.time}
+      <h3>Name: ${contactInfo.name}</h3>
+      <h3>Email: ${contactInfo.email}</h3>
+      <h3>Mobile Number: ${contactInfo.mobileNumber}</h3>
+      <h3>Address: ${contactInfo.address}</h3>
+      <h3>City: ${contactInfo.city}</h3>
+      <h3>City (Outside Nairobi): ${contactInfo.otherCity}</h3>
+      <h3>Device Pickup/Collection: ${contactInfo.deviceCollection}</h3>
+      <h3>Collection Cost: ${contactInfo.deviceCollectionCost}</h3>
+      <h3>Collection/Pickup Time: ${contactInfo.time}</h3>
   
       `;
     setHtml(
@@ -295,7 +295,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     // console.log(msg + messages.join(" "));
   };
   const sendEmail = () => {
-    fetch("http://localhost:5000/v1/send-email", {
+    fetch("http://192.168.10.3:5000/v1/send-email", {
       method: "POST",
       body: JSON.stringify({
         to: contactInfo.email,
