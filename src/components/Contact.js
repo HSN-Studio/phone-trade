@@ -65,7 +65,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   // );
   const [html, setHtml] = useState("");
   let emailTemplate = "template only";
-  let msg = "Trade In Offer(s)";
+  let msg = "Trade In Offer(s):";
 
   // useEffect(() => {
   //   console.log(contactInfo, devices);
@@ -196,7 +196,8 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     if (inputsValidator() === true) {
       await msgGenerator();
       await htmlGenerator();
-      sendEmail();
+      await sendEmail();
+      await sendMessage();
     }
 
     // balanceCalculator();
@@ -291,7 +292,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       //     msg +
       //     `${device.model} with ${device.tradeDevice} & difference is ${device.tradeDifference}.`;
     });
-    msg = msg + messages.join(" ");
+    msg = msg + messages.join(``);
     // console.log(msg + messages.join(" "));
   };
   const sendEmail = () => {
@@ -300,6 +301,18 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       body: JSON.stringify({
         to: contactInfo.email,
         html: emailTemplate,
+      }),
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+  const sendMessage = () => {
+    fetch("http://192.168.10.3:5000/v1/send-message", {
+      method: "POST",
+      body: JSON.stringify({
+        number: contactInfo.mobileNumber.replace("0", "+254"),
+        msg: msg,
       }),
       headers: { "Content-type": "application/json" },
     })
