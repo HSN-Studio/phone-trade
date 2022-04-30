@@ -296,7 +296,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     // console.log(msg + messages.join(" "));
   };
   const sendEmail = () => {
-    fetch("http://192.168.10.3:5000/v1/send-email", {
+    fetch("https://havelivirasat.com/phonetrade/v1/send-email", {
       method: "POST",
       body: JSON.stringify({
         to: contactInfo.email,
@@ -308,7 +308,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
       .then((data) => console.log(data));
   };
   const sendMessage = () => {
-    fetch("http://192.168.10.3:5000/v1/send-message", {
+    fetch("https://havelivirasat.com/phonetrade/v1/send-message", {
       method: "POST",
       body: JSON.stringify({
         number: contactInfo.mobileNumber.replace("0", "+254"),
