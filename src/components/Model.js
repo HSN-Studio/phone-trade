@@ -9,7 +9,7 @@ function Model({ devices, step, handler }) {
   return (
     <div className="section-2">
       <div className="step-title">
-        <h1>Choose Device Model:</h1>
+        <h1>Choose Device Model</h1>
       </div>
       <div className="container models-container">
         {devices.map((device, i) => (

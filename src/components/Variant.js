@@ -17,7 +17,7 @@ function Variant({ step, handler, allDevices, deviceDetails, deviceNumber }) {
   return (
     <div className="section-3">
       <div className="step-title">
-        <h1>Device Details:</h1>
+        <h1>Device Details</h1>
       </div>
       <div className="container variant-container">
         <div>

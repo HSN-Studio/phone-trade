@@ -11,7 +11,7 @@ function Brand({ step, handler, deviceNumber }) {
   return (
     <div className="section-1">
       <div className="step-title">
-        <h1>Select Brand:</h1>
+        <h1>Select Brand</h1>
       </div>
       <div className="container brands-container">
         <Brandcard title="Apple" handler={brandClickHandler} />

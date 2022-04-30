@@ -12,6 +12,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import CartItems from "./CartItems";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SendIcon from "@mui/icons-material/Send";
 
 function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   //States
@@ -519,12 +521,28 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
           Previous: Trade-In Options
         </button>
         {city ? (
-          <button
+          <LoadingButton
+            // loading
             onClick={() => submitHandler()}
+            style={{
+              padding: "1rem 2rem",
+              position: "relative",
+              top: 0,
+              borderRadius: "0.5rem",
+              fontFamily: "Montserrat",
+              fontWeight: "600",
+              textTransform: "none",
+              boxShadow:
+                "0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)",
+            }}
+            loadingPosition="end"
+            endIcon={<SendIcon />}
+            loadingIndicator="Sending Offers"
+            variant="contained"
             className="btn nav-btn nav-btn-next"
           >
             Submit
-          </button>
+          </LoadingButton>
         ) : (
           <button disabled className="btn nav-btn ">
             Submit
