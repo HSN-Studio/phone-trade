@@ -261,6 +261,18 @@ label {
   margin: 0 !important;
 }
 
+/* Thank you Page */
+.thank-you-icon,
+.thank-you-text,
+.home-button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.thank-you-text > h3 {
+  margin-top: 0;
+}
 /* Mobile CSS */
 @media only screen and (max-width: 767px) {
   .step-title > h1 {

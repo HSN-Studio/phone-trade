@@ -5,6 +5,7 @@ import Model from "./components/Model";
 import Variant from "./components/Variant";
 import TradeIn from "./components/TradeIn";
 import Contact from "./components/Contact";
+import ThankYou from "./components/ThankYou";
 function App() {
   // States
   const [allDevices, setallDevices] = useState("");
@@ -79,6 +80,10 @@ function App() {
     setuserDevices(devices);
     setStepNumber(step);
   };
+  const thanksHandler = () => {
+    console.log("Thank you Page!");
+    setStepNumber(6);
+  };
   const addDeviceHandler = (deviceNumber, step) => {
     setdeviceNumber(deviceNumber);
     setStepNumber(step);
@@ -134,8 +139,11 @@ function App() {
             handler={contactHandler}
             deviceNumber={deviceNumber}
             addHandler={addDeviceHandler}
+            thanksHandler={thanksHandler}
           />
         );
+      case 6:
+        return <ThankYou />;
     }
   };
   // JSX

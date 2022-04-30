@@ -15,9 +15,17 @@ import CartItems from "./CartItems";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
 
-function Contact({ devices, step, handler, deviceNumber, addHandler }) {
+function Contact({
+  devices,
+  step,
+  handler,
+  deviceNumber,
+  addHandler,
+  thanksHandler,
+}) {
   //States
   let userBalanceTemp;
+  const [loading, setloading] = useState(false);
   const cities = [
     "Arboretum",
     "Cbd",
@@ -62,24 +70,10 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   const [timeError, settimeError] = useState(false);
   const [deviceCollectionError, setdeviceCollectionError] = useState(false);
   const [userBalance, setUserBalance] = useState(0);
-  // const [msg, setMsg] = useState(
-  //   "Thank you for using PhoneTrade.co.ke, Your Trade In Offers:"
-  // );
   const [html, setHtml] = useState("");
   let emailTemplate = "template only";
   let msg = "Trade In Offer(s):";
-
-  // useEffect(() => {
-  //   console.log(contactInfo, devices);
-  //   // balanceCalculator();
-  // }, [contactInfo]);
-  // useEffect(() => {
-  //   msgGenerator();
-  // }, []);
-  useEffect(() => {
-    console.log(emailTemplate);
-    // console.table(devices);
-  }, [emailTemplate]);
+  useEffect(() => console.log(contactInfo), [contactInfo]);
 
   //Handler Functions
   const inputHandler = (event) => {
@@ -101,7 +95,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
   };
 
   const methodHandler = (e, method) => {
-    console.log(e, method);
     let contactInfotemp = { ...contactInfo };
     if (method === "Walk-In") {
       contactInfotemp.deviceCollection = method;
@@ -167,11 +160,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
     return contactInfo.deviceCollection !== "" ? true : false;
   };
   const timeValidator = () => {
-    contactInfo.time ? settimeError(false) : settimeError(true);
-    return contactInfo.time !== "" ? true : false;
+    if (contactInfo.deviceCollection !== "G4S Mail In") {
+      contactInfo.time ? settimeError(false) : settimeError(true);
+      return contactInfo.time !== "" ? true : false;
+    } else return true;
   };
   const inputsValidator = () => {
-    console.log("input validator function executed");
     if (
       nameValidator() === true &&
       emailValidator() === true &&
@@ -196,10 +190,12 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
 
   const submitHandler = async () => {
     if (inputsValidator() === true) {
+      setloading(true);
       await msgGenerator();
       await htmlGenerator();
       await sendEmail();
       await sendMessage();
+      setTimeout(() => thanksHandler(), 5000);
     }
 
     // balanceCalculator();
@@ -474,7 +470,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
                 minDateTime={new Date()}
                 onChange={(newDateTime) => {
                   dateTimeHandler(newDateTime);
-                  console.log(newDateTime);
                 }}
                 onBlur={timeValidator}
               />
@@ -522,7 +517,7 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
         </button>
         {city ? (
           <LoadingButton
-            // loading
+            loading={loading}
             onClick={() => submitHandler()}
             style={{
               padding: "1rem 2rem",
@@ -537,7 +532,6 @@ function Contact({ devices, step, handler, deviceNumber, addHandler }) {
             }}
             loadingPosition="end"
             endIcon={<SendIcon />}
-            loadingIndicator="Sending Offers"
             variant="contained"
             className="btn nav-btn nav-btn-next"
           >
