@@ -6,6 +6,7 @@ import Variant from "./components/Variant";
 import TradeIn from "./components/TradeIn";
 import Contact from "./components/Contact";
 import ThankYou from "./components/ThankYou";
+import Header from "./components/Header";
 function App() {
   // States
   const [allDevices, setallDevices] = useState("");
@@ -146,7 +147,12 @@ function App() {
     }
   };
   // JSX
-  return <div className="App">{renderStep(stepNumber)}</div>;
+  return (
+    <div className="App">
+      <Header />
+      {renderStep(stepNumber)}
+    </div>
+  );
 }
 
 export default App;

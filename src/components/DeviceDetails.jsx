@@ -116,7 +116,7 @@ function DeviceDetails({ deviceDetails, allDevices, handler }) {
       </div>
       <div className="summary">
         <img
-          src={`https://havelivirasat.com/phonetradeapp/images/model-images/${deviceDetails.model
+          src={`https://phonetradein.co.ke/trade/images/model-images/${deviceDetails.model
             .toLowerCase()
             .replaceAll(" ", "-")}.jpg`}
           alt={deviceDetails.model}

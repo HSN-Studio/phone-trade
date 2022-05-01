@@ -22,7 +22,7 @@ function Brandcard({ title, handler }) {
           </a>
         ) : (
           <img
-            src={`https://havelivirasat.com/phonetradeapp/images/brand-logos/${title.toLowerCase()}-logo.png`}
+            src={`https://phonetradein.co.ke/trade/images/brand-logos/${title.toLowerCase()}-logo.png`}
             alt={title}
           ></img>
         )}

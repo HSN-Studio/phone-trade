@@ -5,7 +5,7 @@ function CartItems({ device }) {
     <div className="cart-item-card">
       <div className="cart-item-img">
         <img
-          src={`https://havelivirasat.com/phonetradeapp/images/model-images/${device.model
+          src={`https://phonetradein.co.ke/trade/images/model-images/${device.model
             .toLowerCase()
             .replaceAll(" ", "-")}.jpg`}
           alt={device.model}

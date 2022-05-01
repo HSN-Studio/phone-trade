@@ -11,6 +11,16 @@
 .container {
   margin-bottom: 2rem;
 }
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+.header-logo {
+  max-height: 90px;
+  width: auto;
+}
 h2 {
   font-weight: 800;
 }
