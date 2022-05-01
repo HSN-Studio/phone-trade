@@ -73,7 +73,6 @@ function Contact({
   const [html, setHtml] = useState("");
   let emailTemplate = "template only";
   let msg = "Trade In Offer(s):";
-  useEffect(() => console.log(contactInfo), [contactInfo]);
 
   //Handler Functions
   const inputHandler = (event) => {
@@ -294,7 +293,7 @@ function Contact({
     // console.log(msg + messages.join(" "));
   };
   const sendEmail = () => {
-    fetch("https://havelivirasat.com/phonetrade/v1/send-email", {
+    fetch("https://havelivirasat.com/phonetradeserver/v1/send-email", {
       method: "POST",
       body: JSON.stringify({
         to: contactInfo.email,
@@ -306,7 +305,7 @@ function Contact({
       .then((data) => console.log(data));
   };
   const sendMessage = () => {
-    fetch("https://havelivirasat.com/phonetrade/v1/send-message", {
+    fetch("https://havelivirasat.com/phonetradeserver/v1/send-message", {
       method: "POST",
       body: JSON.stringify({
         number: contactInfo.mobileNumber.replace("0", "+254"),

@@ -81,7 +81,6 @@ function App() {
     setStepNumber(step);
   };
   const thanksHandler = () => {
-    console.log("Thank you Page!");
     setStepNumber(6);
   };
   const addDeviceHandler = (deviceNumber, step) => {
