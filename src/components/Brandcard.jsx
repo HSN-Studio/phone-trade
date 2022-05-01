@@ -21,7 +21,10 @@ function Brandcard({ title, handler }) {
             </h2>
           </a>
         ) : (
-          <img src={`/images/brand-logos/${title}-logo.png`} alt={title}></img>
+          <img
+            src={`https://havelivirasat.com/phonetradeapp/images/brand-logos/${title.toLowerCase()}-logo.png`}
+            alt={title}
+          ></img>
         )}
       </div>
     </div>

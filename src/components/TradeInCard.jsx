@@ -133,7 +133,7 @@ function TradeInCard({ device, index, allDevices, handler }) {
       <div className="trade-options-summary">
         <div className="trade-in-card-img">
           <img
-            src={`/images/model-images/${device.model
+            src={`https://havelivirasat.com/phonetradeapp/images/model-images/${device.model
               .toLowerCase()
               .replaceAll(" ", "-")}.jpg`}
             alt={device.model}

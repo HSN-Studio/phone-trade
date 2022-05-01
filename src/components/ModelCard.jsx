@@ -17,7 +17,7 @@ function ModelCard({ title, handler }) {
     >
       <input type="radio" name="model" id={modelTitle} value={title}></input>
       <img
-        src={`/images/model-images/${title
+        src={`https://havelivirasat.com/phonetradeapp/images/model-images/${title
           .toLowerCase()
           .replaceAll(" ", "-")}.jpg`}
         alt={title}
